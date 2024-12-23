@@ -6,6 +6,7 @@ import Home from "../pages/Home/Home";
 import Signup from "../pages/Signup/Signup";
 import Login from "../pages/Login/Login";
 import AntiqueDetails from "../pages/AntiqueDetails/AntiqueDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -19,7 +20,9 @@ const router = createBrowserRouter([
             },
             {
                 path: '/antiques/:id',
-                element: <AntiqueDetails></AntiqueDetails>,
+                element: <PrivateRoute>
+                    <AntiqueDetails></AntiqueDetails>
+                </PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:3000/antiques/${params.id}`)
             },
             {

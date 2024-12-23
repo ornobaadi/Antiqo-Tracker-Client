@@ -2,9 +2,14 @@ import { useContext } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import SocialLogin from "../../shared/SocialLogin";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const { loginUser } = useContext(AuthContext)
+    const { loginUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log('In login page',location);
+    const from = location.state || '/';
 
     const handleLogin = e => {
         e.preventDefault();
@@ -16,6 +21,7 @@ const Login = () => {
         loginUser(email, password)
         .then(result =>{
             console.log('login', result.user);
+            navigate(from)
         })
         .catch(error => {
             console.log(error);
