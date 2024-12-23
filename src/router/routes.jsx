@@ -5,6 +5,7 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home/Home";
 import Signup from "../pages/Signup/Signup";
 import Login from "../pages/Login/Login";
+import AntiqueDetails from "../pages/AntiqueDetails/AntiqueDetails";
 
 const router = createBrowserRouter([
     {
@@ -15,6 +16,11 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
+            },
+            {
+                path: '/antiques/:id',
+                element: <AntiqueDetails></AntiqueDetails>,
+                loader: ({params}) => fetch(`http://localhost:3000/antiques/${params.id}`)
             },
             {
                 path: '/signup',

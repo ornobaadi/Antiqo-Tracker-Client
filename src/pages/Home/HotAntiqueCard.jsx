@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const HotAntiqueCard = ({ antique }) => {
 
-    const { artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation } = antique;
+    const { _id, artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation } = antique;
 
     return (
         <div className="card bg-base-100 shadow-xl">
@@ -29,7 +29,7 @@ const HotAntiqueCard = ({ antique }) => {
                 </div>
                 <div className="card-actions justify-end mt-4">
                     <Link
-                        to={`/artifacts/${antique.artifactName.toLowerCase().replace(/\s+/g, "-")}`}
+                        to={`/antiques/${_id}`}
                         className="btn btn-primary btn-sm"
                     >
                         Learn More
