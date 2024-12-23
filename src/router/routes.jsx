@@ -9,6 +9,7 @@ import AntiqueDetails from "../pages/AntiqueDetails/AntiqueDetails";
 import PrivateRoute from "./PrivateRoute";
 import Error from "../pages/Error/Error";
 import AllAntiques from "../pages/AllAntiques/AllAntiques";
+import MyLikedAntiques from "../pages/MyLikedAntiques/MyLikedAntiques";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,12 @@ const router = createBrowserRouter([
                     <AntiqueDetails></AntiqueDetails>
                 </PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:3000/antiques/${params.id}`)
+            },
+            {
+                path: '/likedantiques',
+                element: <PrivateRoute>
+                    <MyLikedAntiques></MyLikedAntiques>
+                    </PrivateRoute>
             },
             {
                 path: '/signup',
