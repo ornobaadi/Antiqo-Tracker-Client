@@ -1,4 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 
 const AntiqueDetails = () => {
@@ -15,7 +16,52 @@ const AntiqueDetails = () => {
 
     const { id } = useParams();
     const { user } = useAuth();
-    console.log(id, user);
+    const [isLiked, setIsLiked] = useState(false);
+
+    // Fetch initial liked status
+    useEffect(() => {
+        fetch(`http://localhost:3000/liked-antiques/${id}?email=${user.email}`)
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.liked) {
+                    setIsLiked(true);
+                }
+            })
+            .catch((error) => console.error("Error fetching liked status:", error));
+    }, [id, user.email]);
+
+    // Handle like
+    const handleLike = () => {
+        const likedAntique = {
+            antique_id: id,
+            applicant_email: user.email,
+        };
+
+        fetch('http://localhost:3000/liked-antiques', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(likedAntique),
+        })
+            .then((res) => res.json())
+            .then(() => {
+                setIsLiked(true);
+            })
+            .catch((error) => console.error("Error liking antique:", error));
+    };
+
+    // Handle unlike
+    const handleUnlike = () => {
+        fetch(`http://localhost:3000/liked-antiques/${id}?email=${user.email}`, {
+            method: 'DELETE',
+        })
+            .then((res) => res.json())
+            .then(() => {
+                setIsLiked(false);
+            })
+            .catch((error) => console.error("Error unliking antique:", error));
+    };
 
     return (
         <div className="bg-base-100 min-h-[800px] flex items-center justify-center py-10 px-4">
@@ -54,9 +100,11 @@ const AntiqueDetails = () => {
 
                     {/* Action Section */}
                     <div className="flex items-center mt-8">
-                        <button className="btn btn-outline">Like</button>
-                        &nbsp;
-                        <button className="btn btn-neutral">Unlike</button>
+                        {isLiked ? (
+                            <button onClick={handleUnlike} className="btn btn-neutral">Unlike</button>
+                        ) : (
+                            <button onClick={handleLike} className="btn btn-outline">Like</button>
+                        )}
                     </div>
                 </div>
             </div>
