@@ -7,12 +7,13 @@ import Signup from "../pages/Signup/Signup";
 import Login from "../pages/Login/Login";
 import AntiqueDetails from "../pages/AntiqueDetails/AntiqueDetails";
 import PrivateRoute from "./PrivateRoute";
+import Error from "../pages/Error/Error";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
-        errorElement: <h2>Route not found</h2>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/',
