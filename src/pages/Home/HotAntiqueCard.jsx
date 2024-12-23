@@ -15,24 +15,15 @@ const HotAntiqueCard = ({ antique }) => {
                 <p className="text-sm text-gray-500">{antique.historicalContext}</p>
                 <div className="text-sm mt-2">
                     <p>
-                        <span className="font-semibold">Created At:</span> {antique.createdAt}
-                    </p>
-                    <p>
-                        <span className="font-semibold">Discovered At:</span> {antique.discoveredAt}
-                    </p>
-                    <p>
-                        <span className="font-semibold">Discovered By:</span> {antique.discoveredBy}
-                    </p>
-                    <p>
-                        <span className="font-semibold">Present Location:</span> {antique.presentLocation}
+                        <span className="font-semibold">Like Count: </span> {}
                     </p>
                 </div>
                 <div className="card-actions justify-end mt-4">
                     <Link
                         to={`/antiques/${_id}`}
-                        className="btn btn-primary btn-sm"
+                        className="btn btn-primary"
                     >
-                        Learn More
+                        View Details
                     </Link>
                 </div>
             </div>

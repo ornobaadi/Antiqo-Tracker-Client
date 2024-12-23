@@ -3,7 +3,7 @@ const Footer = () => {
     return (
         <footer className="footer footer-center bg-neutral text-primary-content p-10">
             <aside>
-                <img className="w-52" src="/logo.webp" alt="" />
+                <img className="w-32" src="/logo.webp" alt="" />
                 <p className="font-bold">
                     ACME Industries Ltd.
                     <br />

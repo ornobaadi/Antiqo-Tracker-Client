@@ -3,6 +3,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthContext from '../../context/AuthContext/AuthContext';
 import SocialLogin from '../../shared/SocialLogin';
+import { Link } from 'react-router-dom';
 const Signup = () => {
 
     const { createUser } = useContext(AuthContext);
@@ -32,46 +33,63 @@ const Signup = () => {
         toast.success("Signup successful!");
 
         createUser(email, password)
-        .then(result => {
-            console.log(result.user);
-        })
-        .catch(error => {
-            console.log(error.message);
-        })
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
     return (
-        <div className="hero bg-base-200 min-h-screen">
-            <div className="hero-content flex-col">
-                <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Sign Up now!</h1>
+        <div className="min-h-screen bg-base-100 flex items-center justify-center">
+            <div className="max-w-md w-full bg-base-100 shadow-xl rounded-lg p-8">
+                <div className="text-center mb-6">
+                    <h1 className="text-3xl font-bold">Sign Up</h1>
+                    <p className="text-sm text-gray-500 mt-2">Create your account to get started!</p>
                 </div>
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <form onSubmit={handleSignup} className="card-body">
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                <form onSubmit={handleSignup} className="space-y-4">
+                    <div className="form-control">
+                        <label className="label mb-2 text-sm font-medium text-gray-600">
+                            <span>Email</span>
+                        </label>
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            className="input input-bordered w-full"
+                            required
+                        />
+                    </div>
+                    <div className="form-control">
+                        <label className="label mb-2 text-sm font-medium text-gray-600">
+                            <span>Password</span>
+                        </label>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            className="input input-bordered w-full"
+                            required
+                        />
+                        <div className="text-right mt-2">
+                            <a href="#" className="text-xs text-primary hover:underline">
+                                Forgot password?
+                            </a>
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
-                        </div>
-                        <div className="form-control mt-6">
-                            <button className="btn btn-primary">Sign Up</button>
-                        </div>
-                    </form>
-                    <SocialLogin></SocialLogin>
-                </div>
+                    </div>
+                    <div className="form-control">
+                        <button className="btn btn-primary w-full">Sign Up</button>
+                    </div>
+                    <h2 className="text-center py-5">Already have an Account? &nbsp;
+                        <Link to='/login' className="font-semibold">Login</Link>
+                    </h2>
+                </form>
+                <SocialLogin />
             </div>
             <ToastContainer />
         </div>
+
     );
 };
 
