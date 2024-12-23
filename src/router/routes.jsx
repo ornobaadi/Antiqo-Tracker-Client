@@ -8,6 +8,7 @@ import Login from "../pages/Login/Login";
 import AntiqueDetails from "../pages/AntiqueDetails/AntiqueDetails";
 import PrivateRoute from "./PrivateRoute";
 import Error from "../pages/Error/Error";
+import AllAntiques from "../pages/AllAntiques/AllAntiques";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <Signup></Signup>,
+            },
+            {
+                path: '/allantiques',
+                element: <AllAntiques></AllAntiques>,
             },
             {
                 path: '/login',

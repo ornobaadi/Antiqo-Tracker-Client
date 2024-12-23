@@ -1,5 +1,6 @@
 import Banner from "./Banner";
 import HotAntiques from "./HotAntiques";
+import Timeline from "./Timeline";
 
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <HotAntiques></HotAntiques>
+            <Timeline></Timeline>
         </div>
     );
 };
