@@ -14,8 +14,8 @@ const HotArtifactCard = ({ artifact }) => {
                 <h2 className="card-title text-lg font-bold">{artifact.artifactName}</h2>
                 <p className="text-sm text-gray-500">{artifact.historicalContext}</p>
                 <div className="text-sm mt-2">
-                    <p>
-                        <span className="font-semibold">Like Count: </span> {artifact.likeCount}
+                    <p
+                        className="text-xl font-semibold">Like Count: {artifact.likeCount}
                     </p>
                 </div>
                 <div className="card-actions justify-end mt-4">
