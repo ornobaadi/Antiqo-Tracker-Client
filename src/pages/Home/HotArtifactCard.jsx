@@ -15,7 +15,7 @@ const HotArtifactCard = ({ artifact }) => {
                 <p className="text-sm text-gray-500">{artifact.historicalContext}</p>
                 <div className="text-sm mt-2">
                     <p>
-                        <span className="font-semibold">Like Count: </span> {}
+                        <span className="font-semibold">Like Count: </span> {artifact.likeCount}
                     </p>
                 </div>
                 <div className="card-actions justify-end mt-4">

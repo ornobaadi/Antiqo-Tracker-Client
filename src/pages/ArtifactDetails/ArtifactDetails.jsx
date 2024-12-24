@@ -12,6 +12,7 @@ const ArtifactDetails = () => {
         discoveredAt,
         discoveredBy,
         presentLocation,
+        likeCount,
     } = useLoaderData();
 
     const { id } = useParams();
@@ -95,6 +96,9 @@ const ArtifactDetails = () => {
                         </p>
                         <p>
                             <span className="font-semibold text-gray-700">Present Location:</span> {presentLocation}
+                        </p>
+                        <p
+                            className="text-xl font-semibold text-gray-700"> Like Count: {likeCount}
                         </p>
                     </div>
 

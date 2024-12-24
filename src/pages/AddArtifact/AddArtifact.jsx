@@ -70,6 +70,7 @@ const AddArtifact = () => {
                         <option value="Tools">Tools</option>
                         <option value="Monument">Monument</option>
                         <option value="Art">Art</option>
+                        <option value="Sculptures">Sculptures</option>
                         <option value="Technology">Technology</option>
                         <option value="Documents">Documents</option>
                         <option value="Writings">Writings</option>

@@ -24,7 +24,7 @@ const MyArtifacts = () => {
                             <th></th>
                             <th>Artifact Name</th>
                             <th>Artifact Type</th>
-                            <th>Favorite Color</th>
+                            <th>Like Count</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +33,7 @@ const MyArtifacts = () => {
                                 <th>{index + 1}</th>
                                 <td>{artifact.artifactName}</td>
                                 <td>{artifact.artifactType}</td>
-                                <td>Blue</td>
+                                <td>{artifact.likeCount}</td>
                             </tr>)
                         }
                     </tbody>
