@@ -1,19 +1,22 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext/AuthContext";
 import { FaGoogle } from "react-icons/fa";
 
-const SocialLogin = () => {
+const SocialLogin = ({ from }) => {
     const { loginWithGoogle } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    const handleGoogleLogin = () => {
-        loginWithGoogle()
-            .then(result => {
-                console.log(result.user);
-            })
-            .catch(error => {
-                console.log(error.message);
-            })
+    const handleGoogleLogin = async () => {
+        try {
+            const result = await loginWithGoogle();
+            console.log(result.user);
+            navigate(from, { replace: true });
+        } catch (error) {
+            console.error(error.message);
+        }
     }
+
     return (
         <>
             <div className="divider">OR</div>

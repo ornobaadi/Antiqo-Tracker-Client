@@ -1,8 +1,9 @@
-import { Navigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const AddArtifact = () => {
+    const navigate = useNavigate();
 
     const {user} = useAuth()
 
@@ -33,6 +34,7 @@ const AddArtifact = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    navigate('/myartifacts')
                 }
 
             })
@@ -42,7 +44,7 @@ const AddArtifact = () => {
 
     return (
         <div className="container mx-auto px-5 py-10">
-            <h2 className="text-4xl text-center font-bold text-gray-800 mb-10">Add a New Artifact</h2>
+            <h2 className="text-4xl text-center font-medium text-gray-800 mb-10">Add a New Artifact</h2>
             <form onSubmit={handleAddArtifact} className="bg-white shadow-lg rounded-lg p-8 space-y-6">
                 {/* Artifact name */}
                 <div className="form-control">

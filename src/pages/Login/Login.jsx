@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import SocialLogin from "../../shared/SocialLogin";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -7,24 +7,25 @@ const Login = () => {
     const { loginUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    console.log('In login page', location);
-    const from = location.state || '/';
+    const [error, setError] = useState("");
+    // console.log('In login page', location);
 
-    const handleLogin = e => {
+    const from = location.state?.from?.pathname || "/";
+
+    const handleLogin = async (e) => {
         e.preventDefault();
+        setError("");
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
 
-        loginUser(email, password)
-            .then(result => {
-                console.log('login', result.user);
-                navigate(from)
-            })
-            .catch(error => {
-                console.log(error);
-            })
+        try {
+            const result = await loginUser(email, password);
+            console.log('login', result.user);
+            navigate(from, { replace: true });
+        } catch (error) {
+            setError(error.message);
+        }
     }
 
     return (
@@ -34,6 +35,7 @@ const Login = () => {
                     <h1 className="text-3xl font-bold">Login</h1>
                     <p className="text-sm text-gray-500 mt-2">Welcome back! Please login to continue.</p>
                 </div>
+                {error && <div className="alert alert-error mb-4">{error}</div>}
                 <form onSubmit={handleLogin} className="space-y-4">
                     <div className="form-control">
                         <label className="label mb-2 text-sm font-medium text-gray-600">
@@ -71,7 +73,7 @@ const Login = () => {
                         <Link to='/signup' className="font-semibold">Signup</Link>
                     </h2>
                 </form>
-                <SocialLogin />
+                <SocialLogin from={from} />
             </div>
         </div>
 

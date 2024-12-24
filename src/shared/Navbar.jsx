@@ -21,6 +21,7 @@ const Navbar = () => {
         <li><NavLink to='/allartifacts'>All Artifacts</NavLink></li>
         <li><NavLink to='/addartifacts'>Add Artifacts</NavLink></li>
         <li><NavLink to='/likedartifacts'>Liked Artifacts</NavLink></li>
+        <li><NavLink to='/myartifacts'>My Artifacts</NavLink></li>
     </>
 
     return (
