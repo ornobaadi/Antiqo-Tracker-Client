@@ -5,11 +5,12 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home/Home";
 import Signup from "../pages/Signup/Signup";
 import Login from "../pages/Login/Login";
-import AntiqueDetails from "../pages/AntiqueDetails/AntiqueDetails";
+import ArtifactDetails from "../pages/ArtifactDetails/ArtifactDetails";
 import PrivateRoute from "./PrivateRoute";
 import Error from "../pages/Error/Error";
-import AllAntiques from "../pages/AllAntiques/AllAntiques";
-import MyLikedAntiques from "../pages/MyLikedAntiques/MyLikedAntiques";
+import AllArtifacts from "../pages/AllArtifacts/AllArtifacts";
+import MyLikedArtifacts from "../pages/MyLikedArtifacts/MyLikedArtifacts";
+import AddArtifact from "../pages/AddArtifact/AddArtifact";
 
 const router = createBrowserRouter([
     {
@@ -22,16 +23,22 @@ const router = createBrowserRouter([
                 element: <Home></Home>,
             },
             {
-                path: '/antiques/:id',
+                path: '/artifacts/:id',
                 element: <PrivateRoute>
-                    <AntiqueDetails></AntiqueDetails>
+                    <ArtifactDetails></ArtifactDetails>
                 </PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:3000/antiques/${params.id}`)
+                loader: ({params}) => fetch(`http://localhost:3000/artifacts/${params.id}`)
             },
             {
-                path: '/likedantiques',
+                path: '/likedartifacts',
                 element: <PrivateRoute>
-                    <MyLikedAntiques></MyLikedAntiques>
+                    <MyLikedArtifacts></MyLikedArtifacts>
+                    </PrivateRoute>
+            },
+            {
+                path: '/addartifacts',
+                element: <PrivateRoute>
+                    <AddArtifact></AddArtifact>
                     </PrivateRoute>
             },
             {
@@ -39,8 +46,8 @@ const router = createBrowserRouter([
                 element: <Signup></Signup>,
             },
             {
-                path: '/allantiques',
-                element: <AllAntiques></AllAntiques>,
+                path: '/allartifacts',
+                element: <AllArtifacts></AllArtifacts>,
             },
             {
                 path: '/login',

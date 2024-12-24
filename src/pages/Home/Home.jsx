@@ -1,5 +1,5 @@
 import Banner from "./Banner";
-import HotAntiques from "./HotAntiques";
+import HotArtifacts from "./HotArtifacts";
 import Timeline from "./Timeline";
 
 
@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <HotAntiques></HotAntiques>
+            <HotArtifacts></HotArtifacts>
             <Timeline></Timeline>
         </div>
     );

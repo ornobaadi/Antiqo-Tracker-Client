@@ -2,7 +2,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 
-const AntiqueDetails = () => {
+const ArtifactDetails = () => {
     const {
         artifactName,
         artifactImage,
@@ -20,7 +20,7 @@ const AntiqueDetails = () => {
 
     // Fetch initial liked status
     useEffect(() => {
-        fetch(`http://localhost:3000/liked-antiques/${id}?email=${user.email}`)
+        fetch(`http://localhost:3000/liked-artifacts/${id}?email=${user.email}`)
             .then((res) => res.json())
             .then((data) => {
                 if (data.liked) {
@@ -32,35 +32,35 @@ const AntiqueDetails = () => {
 
     // Handle like
     const handleLike = () => {
-        const likedAntique = {
-            antique_id: id,
+        const likedArtifact = {
+            artifact_id: id,
             applicant_email: user.email,
         };
 
-        fetch('http://localhost:3000/liked-antiques', {
+        fetch('http://localhost:3000/liked-artifacts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(likedAntique),
+            body: JSON.stringify(likedArtifact),
         })
             .then((res) => res.json())
             .then(() => {
                 setIsLiked(true);
             })
-            .catch((error) => console.error("Error liking antique:", error));
+            .catch((error) => console.error("Error liking artifact:", error));
     };
 
     // Handle unlike
     const handleUnlike = () => {
-        fetch(`http://localhost:3000/liked-antiques/${id}?email=${user.email}`, {
+        fetch(`http://localhost:3000/liked-artifacts/${id}?email=${user.email}`, {
             method: 'DELETE',
         })
             .then((res) => res.json())
             .then(() => {
                 setIsLiked(false);
             })
-            .catch((error) => console.error("Error unliking antique:", error));
+            .catch((error) => console.error("Error unliking artifact:", error));
     };
 
     return (
@@ -112,4 +112,4 @@ const AntiqueDetails = () => {
     );
 };
 
-export default AntiqueDetails;
+export default ArtifactDetails;
