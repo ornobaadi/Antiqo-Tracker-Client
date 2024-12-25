@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const MyLikedArtifacts = () => {
 
@@ -15,6 +16,9 @@ const MyLikedArtifacts = () => {
 
     return (
         <div className="container mx-auto">
+            <Helmet>
+                <title>Liked Artifacts | Antiqo</title>
+            </Helmet>
             <h2 className="text-4xl font-medium text-center my-10">My Liked Artifact: {likes.length}</h2>
 
             <div className="overflow-x-auto pb-10">

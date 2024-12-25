@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, updateProfile } from "firebase/auth";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import { Helmet } from "react-helmet";
 
 const UpdateProfile = () => {
     const { user } = useContext(AuthContext);
@@ -31,6 +32,9 @@ const UpdateProfile = () => {
 
     return (
         <div className="min-h-screen flex flex-col items-center py-12">
+            <Helmet>
+                <title>Update Profile | Antiqo</title>
+            </Helmet>
             <div className="w-full max-w-lg bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden">
                 <div className="px-8 py-6">
                     <h2 className="text-2xl font-semibold text-slate-800 text-center mb-6">

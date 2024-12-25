@@ -1,6 +1,7 @@
 <div align="center">
-  <img src="public/logo.webp" alt="Antiqo Logo">
+  <img src="public/logo.webp" alt="Antiqo Logo" width="400">
 </div>
+
 
 # Antiqo - Historical Artifacts Tracker
 

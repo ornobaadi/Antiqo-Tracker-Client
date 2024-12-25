@@ -54,9 +54,9 @@ const Banner = () => {
                     <div className="flex flex-col items-center justify-center h-full bg-black bg-opacity-50 text-white text-center px-4">
                         <h1 className="text-4xl font-bold mb-2">{slide.title}</h1>
                         <p className="text-lg mb-4">{slide.subtitle}</p>
-                        <Link to='/'
+                        <Link to='/allartifacts'
                             className="btn font-semibold rounded shadow">
-                            Learn More
+                            Explore More
                         </Link>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import { Helmet } from "react-helmet";
 
 
 const Profile = () => {
@@ -8,6 +9,9 @@ const Profile = () => {
 
     return (
         <div className="min-h-screen flex flex-col items-center py-12">
+            <Helmet>
+                <title>My Profile | Antiqo</title>
+            </Helmet>
             <div className="w-full max-w-lg bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden">
                 {/* Profile Header */}
                 <div className="flex flex-col items-center p-8 space-y-4">

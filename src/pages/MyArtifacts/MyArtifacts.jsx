@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const MyArtifacts = () => {
 
@@ -15,6 +16,9 @@ const MyArtifacts = () => {
 
     return (
         <div className="container mx-auto px-5 py-10">
+            <Helmet>
+                <title>My Artifacts | Antiqo</title>
+            </Helmet>
             <h2 className="text-4xl text-center font-medium mb-10">My Posted Artifacts: {artifacts.length} </h2>
             <div className="overflow-x-auto">
                 <table className="table">
