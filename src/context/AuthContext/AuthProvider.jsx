@@ -55,13 +55,13 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider)
             .then((result) => {
-                // Update user state with Google profile info
                 setUser({
                     name: result.user.displayName,
                     email: result.user.email,
                     photoURL: result.user.photoURL,
                 });
                 setLoading(false);
+                return result; // Return the result for the component to use
             })
             .catch((error) => {
                 console.error("Error logging in with Google:", error);

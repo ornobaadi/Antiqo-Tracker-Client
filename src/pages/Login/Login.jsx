@@ -2,13 +2,13 @@ import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import SocialLogin from "../../shared/SocialLogin";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const { loginUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const [error, setError] = useState("");
-    // console.log('In login page', location);
 
     const from = location.state?.from?.pathname || "/";
 
@@ -22,11 +22,25 @@ const Login = () => {
         try {
             const result = await loginUser(email, password);
             console.log('login', result.user);
-            navigate(from, { replace: true });
+            // Show success alert
+            Swal.fire({
+                icon: 'success',
+                title: 'Login Successful!',
+                text: 'You have successfully logged in.',
+            }).then(() => {
+                // Redirect after clicking OK
+                navigate(from, { replace: true });
+            });
         } catch (error) {
             setError(error.message);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error.message,
+            });
         }
     }
+
 
     return (
         <div className="min-h-screen bg-base-100 flex items-center justify-center">
@@ -35,7 +49,7 @@ const Login = () => {
                     <h1 className="text-3xl font-bold">Login</h1>
                     <p className="text-sm text-gray-500 mt-2">Welcome back! Please login to continue.</p>
                 </div>
-                {error && <div className="alert alert-error mb-4">{error}</div>}
+                {error && <div className="alert alert-error text-white mb-4">{error}</div>}
                 <form onSubmit={handleLogin} className="space-y-4">
                     <div className="form-control">
                         <label className="label mb-2 text-sm font-medium text-gray-600">
@@ -73,7 +87,7 @@ const Login = () => {
                         <Link to='/signup' className="font-semibold">Signup</Link>
                     </h2>
                 </form>
-                <SocialLogin from={from} />
+                <SocialLogin />
             </div>
         </div>
 

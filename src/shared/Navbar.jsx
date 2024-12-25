@@ -2,8 +2,9 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../context/AuthContext/AuthContext";
 
-const Navbar = () => {
+const DEFAULT_USER_IMAGE = "https://www.shutterstock.com/image-vector/3d-realistic-person-people-vector-600nw-2058395777.jpg";
 
+const Navbar = () => {
     const { user, logoutUser } = useContext(AuthContext);
 
     const handleLogout = () => {
@@ -13,19 +14,18 @@ const Navbar = () => {
             })
             .catch(error => {
                 console.log("Failed", error);
-            })
-    }
+            });
+    };
+
+    const handleImageError = (e) => {
+        e.target.src = DEFAULT_USER_IMAGE;
+    };
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/allartifacts'>All Artifacts</NavLink></li>
         <li><NavLink to='/addartifacts'>Add Artifacts</NavLink></li>
-        {/* <li><NavLink to='/likedartifacts'>Liked Artifacts</NavLink></li>
-        <li><NavLink to='/myartifacts'>My Artifacts</NavLink></li>
-        {user && (
-            <li><NavLink to='/profile'>My Profile</NavLink></li>
-        )} */}
-    </>
+    </>;
 
     return (
         <div className="navbar bg-base-100 container mx-auto">
@@ -65,11 +65,15 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-end gap-5">
-                {user && user?.photoURL && (
+                {user && (
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-20 rounded-full">
-                                <img src={user.photoURL} alt="User" />
+                            <div className="w-12 rounded-full">
+                                <img
+                                    src={user.photoURL || DEFAULT_USER_IMAGE}
+                                    alt="User"
+                                    onError={handleImageError}
+                                />
                             </div>
                         </div>
                         <ul
