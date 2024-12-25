@@ -30,7 +30,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <ArtifactDetails></ArtifactDetails>
                 </PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:3000/artifacts/${params.id}`)
+                loader: ({params}) => fetch(`https://historical-artifacts-server.vercel.app/artifacts/${params.id}`)
             },
             {
                 path: '/likedartifacts',

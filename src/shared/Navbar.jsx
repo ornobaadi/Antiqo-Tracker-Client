@@ -64,17 +64,17 @@ const Navbar = () => {
                 </ul>
             </div>
 
-            <div className="navbar-end">
+            <div className="navbar-end gap-5">
                 {user && user?.photoURL && (
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
+                            <div className="w-20 rounded-full">
                                 <img src={user.photoURL} alt="User" />
                             </div>
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-64 p-2 shadow">
                             <li><NavLink to='/profile'>My Profile</NavLink></li>
                             <li><NavLink to='/myartifacts'>My Artifacts</NavLink></li>
                             <li><NavLink to='/likedartifacts'>Liked Artifacts</NavLink></li>

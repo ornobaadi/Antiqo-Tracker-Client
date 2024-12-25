@@ -6,7 +6,7 @@ const AllArtifact = () => {
     const [artifacts, setArtifacts] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/artifacts')
+        fetch('https://historical-artifacts-server.vercel.app/artifacts')
         .then(res => res.json())
         .then(data => {
             setArtifacts(data);

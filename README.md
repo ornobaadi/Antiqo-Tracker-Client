@@ -1,10 +1,14 @@
-# Historical Artifacts Tracker
+<div align="center">
+  <img src="public/logo.webp" alt="Antiqo Logo">
+</div>
+
+# Antiqo - Historical Artifacts Tracker
 
 ## Project Purpose
 The Historical Artifacts Tracker is a web application designed for managing and displaying information about various historical artifacts. It allows users to browse, view, and add historical artifacts, as well as like and track their own contributions. The platform emphasizes user-friendly functionality and an engaging design to showcase cultural and historical items.
 
-## Live URL
-[Historical Artifacts Tracker Live Site](#)
+## Links
+- **[Live Site](https://antiqo-tracker.web.app/)** | **[Client Side](https://github.com/programming-hero-web-course2/b10a11-client-side-ornobaadi)** | **[Server Side](https://github.com/programming-hero-web-course2/b10a11-server-side-ornobaadi)**
 
 ## Key Features
 1. **Authentication System**: Email/password and Google/GitHub login options with private/protected routes for secure data access.
@@ -42,7 +46,6 @@ The Historical Artifacts Tracker is a web application designed for managing and 
 - axios (HTTP requests)
 - jsonwebtoken (JWT authentication)
 - dotenv (environment variable management)
-
 
 ## Deployment
 - Ensure that your frontend is deployed on Firebase and backend on Vercel.

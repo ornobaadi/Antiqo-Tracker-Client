@@ -6,7 +6,7 @@ const HotArtifacts = () => {
     const [artifacts, setArtifacts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/artifacts?limit=6') // Fetch top 6
+        fetch('https://historical-artifacts-server.vercel.app/artifacts?limit=6') // Fetch top 6
             .then(res => res.json())
             .then(data => {
                 setArtifacts(data);

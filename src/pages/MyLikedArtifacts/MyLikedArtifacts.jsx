@@ -8,7 +8,7 @@ const MyLikedArtifacts = () => {
     const [likes, setLikes] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:3000/liked-artifact?email=${user.email}`)
+        fetch(`https://historical-artifacts-server.vercel.app/liked-artifact?email=${user.email}`)
             .then(res => res.json())
             .then(data => setLikes(data))
     }, [user.email])

@@ -7,7 +7,7 @@ const MyArtifacts = () => {
     const { user } = useAuth();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/artifacts?email=${user.email}`)
+        fetch(`https://historical-artifacts-server.vercel.app/artifacts?email=${user.email}`)
             .then(res => res.json())
             .then(data => setArtifacts(data))
     }, [user.email])

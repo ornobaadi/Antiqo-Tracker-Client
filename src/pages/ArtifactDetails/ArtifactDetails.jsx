@@ -21,7 +21,7 @@ const ArtifactDetails = () => {
 
     // Fetch initial liked status
     useEffect(() => {
-        fetch(`http://localhost:3000/liked-artifacts/${id}?email=${user.email}`)
+        fetch(`https://historical-artifacts-server.vercel.app/liked-artifacts/${id}?email=${user.email}`)
             .then((res) => res.json())
             .then((data) => {
                 if (data.liked) {
@@ -38,7 +38,7 @@ const ArtifactDetails = () => {
             applicant_email: user.email,
         };
 
-        fetch('http://localhost:3000/liked-artifacts', {
+        fetch('https://historical-artifacts-server.vercel.app/liked-artifacts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const ArtifactDetails = () => {
 
     // Handle unlike
     const handleUnlike = () => {
-        fetch(`http://localhost:3000/liked-artifacts/${id}?email=${user.email}`, {
+        fetch(`https://historical-artifacts-server.vercel.app/liked-artifacts/${id}?email=${user.email}`, {
             method: 'DELETE',
         })
             .then((res) => res.json())

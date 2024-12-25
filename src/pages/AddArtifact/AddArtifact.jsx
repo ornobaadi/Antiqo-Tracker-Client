@@ -17,7 +17,7 @@ const AddArtifact = () => {
         const { ...newArtifact } = initialData;
         console.log(newArtifact);
 
-        fetch('http://localhost:3000/artifacts', {
+        fetch('https://historical-artifacts-server.vercel.app/artifacts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
