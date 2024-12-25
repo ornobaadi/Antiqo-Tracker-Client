@@ -14,6 +14,7 @@ import AddArtifact from "../pages/AddArtifact/AddArtifact";
 import MyArtifacts from "../pages/MyArtifacts/MyArtifacts";
 import Profile from "../pages/Profile/Profile";
 import UpdateProfile from "../pages/Profile/UpdateProfile";
+import UpdateArtifact from "../pages/MyArtifacts/UpdateArtifact";
 
 const router = createBrowserRouter([
     {
@@ -49,6 +50,12 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <MyArtifacts></MyArtifacts>
                     </PrivateRoute>
+            },
+            {
+                path: '/update-artifact/:id',
+                element: <PrivateRoute>
+                    <UpdateArtifact></UpdateArtifact>
+                </PrivateRoute>
             },
             {
                 path: '/signup',
