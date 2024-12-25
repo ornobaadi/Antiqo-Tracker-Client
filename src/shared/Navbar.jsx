@@ -20,11 +20,11 @@ const Navbar = () => {
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/allartifacts'>All Artifacts</NavLink></li>
         <li><NavLink to='/addartifacts'>Add Artifacts</NavLink></li>
-        <li><NavLink to='/likedartifacts'>Liked Artifacts</NavLink></li>
+        {/* <li><NavLink to='/likedartifacts'>Liked Artifacts</NavLink></li>
         <li><NavLink to='/myartifacts'>My Artifacts</NavLink></li>
         {user && (
             <li><NavLink to='/profile'>My Profile</NavLink></li>
-        )}
+        )} */}
     </>
 
     return (
@@ -54,30 +54,42 @@ const Navbar = () => {
 
                 <Link to='/' className="btn btn-ghost text-xl">
                     <img className="w-10 hidden lg:flex" src="/logo.webp" alt="" />
-                    Antiqo</Link>
+                    Antiqo
+                </Link>
             </div>
+
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {links}
                 </ul>
             </div>
+
             <div className="navbar-end">
                 {user && user?.photoURL && (
-                    <Link to='/profile'><img className="w-8 h-8 md:h-12 md:w-12  object-cover rounded-full" src={user.photoURL} alt="User" /></Link>
+                    <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img src={user.photoURL} alt="User" />
+                            </div>
+                        </div>
+                        <ul
+                            tabIndex={0}
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                            <li><NavLink to='/profile'>My Profile</NavLink></li>
+                            <li><NavLink to='/myartifacts'>My Artifacts</NavLink></li>
+                            <li><NavLink to='/likedartifacts'>Liked Artifacts</NavLink></li>
+                        </ul>
+                    </div>
                 )}
 
-                {
-                    user ?
-                        <>
-                            <button onClick={handleLogout} className="btn">Logout</button>
-                        </> : <>
-                            <div className="flex gap-2">
-                                <Link to='/login' className="btn btn-outline">Login</Link>
-                                <Link to='/signup' className="btn btn-neutral">Signup</Link>
-                            </div>
-                        </>
-                }
-
+                {user ? (
+                    <button onClick={handleLogout} className="btn">Logout</button>
+                ) : (
+                    <div className="flex gap-2">
+                        <Link to='/login' className="btn btn-outline">Login</Link>
+                        <Link to='/signup' className="btn btn-neutral">Signup</Link>
+                    </div>
+                )}
             </div>
         </div>
     );

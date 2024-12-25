@@ -21,7 +21,7 @@ const Profile = () => {
                         <div className="w-28 h-28 rounded-full bg-slate-200 border-4 border-emerald-300 shadow-lg"></div>
                     )}
                     <h1 className="text-3xl font-semibold text-slate-800">
-                        Welcome, {user?.displayName || "Guest"}!
+                        Welcome, {user?.name || "Guest"}!
                     </h1>
                     <p className="text-sm text-slate-600">{user?.email || "Email not available"}</p>
                 </div>
@@ -31,7 +31,7 @@ const Profile = () => {
                     <ul className="space-y-2">
                         <li className="flex justify-between">
                             <span className="text-slate-500">Name:</span>
-                            <span className="text-slate-700">{user?.displayName || "Not provided"}</span>
+                            <span className="text-slate-700">{user?.name || "Not provided"}</span>
                         </li>
                         <li className="flex justify-between">
                             <span className="text-slate-500">Email:</span>

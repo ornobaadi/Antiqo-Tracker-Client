@@ -1,8 +1,15 @@
-import { useEffect, useState } from 'react';
-import AuthContext from './AuthContext';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import auth from '../../Firebase/firebase.init';
-import { updateProfile } from 'firebase/auth';
+import { useEffect, useState } from "react";
+import AuthContext from "./AuthContext";
+import {
+    createUserWithEmailAndPassword,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signOut,
+    signInWithPopup,
+    GoogleAuthProvider,
+    updateProfile,
+} from "firebase/auth";
+import auth from "../../Firebase/firebase.init";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -13,20 +20,23 @@ const AuthProvider = ({ children }) => {
     const createUser = (email, password, userName, photoUrl) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
-            .then(result => {
+            .then((result) => {
                 // After user creation, update profile with additional information
-                updateProfile(result.user, {
+                return updateProfile(result.user, {
                     displayName: userName,
                     photoURL: photoUrl,
                 }).then(() => {
-                    setUser(result.user);
-                    setLoading(false);
-                }).catch(error => {
-                    console.error("Error updating profile:", error);
+                    // Update user state with updated profile info
+                    setUser({
+                        name: userName,
+                        email: result.user.email,
+                        photoURL: photoUrl,
+                    });
                     setLoading(false);
                 });
             })
-            .catch(error => {
+            .catch((error) => {
+                console.error("Error creating user:", error);
                 setLoading(false);
                 throw error;
             });
@@ -34,25 +44,62 @@ const AuthProvider = ({ children }) => {
 
     const loginUser = (email, password) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
+        return signInWithEmailAndPassword(auth, email, password).catch((error) => {
+            console.error("Error logging in:", error);
+            setLoading(false);
+            throw error;
+        });
     };
 
     const loginWithGoogle = () => {
         setLoading(true);
-        return signInWithPopup(auth, googleProvider);
+        return signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                // Update user state with Google profile info
+                setUser({
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    photoURL: result.user.photoURL,
+                });
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error("Error logging in with Google:", error);
+                setLoading(false);
+                throw error;
+            });
     };
 
     const logoutUser = () => {
         setLoading(true);
-        return signOut(auth);
+        return signOut(auth)
+            .then(() => {
+                setUser(null);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error("Error logging out:", error);
+                setLoading(false);
+                throw error;
+            });
     };
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser);
-            console.log('state captured', currentUser);
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            if (currentUser) {
+                // Fetch the latest user profile from Firebase
+                const { displayName, email, photoURL } = currentUser;
+                setUser({
+                    name: displayName,
+                    email,
+                    photoURL,
+                });
+            } else {
+                setUser(null);
+            }
             setLoading(false);
         });
+
         return () => {
             unsubscribe();
         };

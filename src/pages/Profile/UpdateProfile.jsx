@@ -8,7 +8,7 @@ const UpdateProfile = () => {
     const auth = getAuth();
     const navigate = useNavigate();
 
-    const [name, setName] = useState(user?.displayName || "");
+    const [name, setName] = useState(user?.name || "");
     const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
     const [loading, setLoading] = useState(false);
 
