@@ -124,7 +124,7 @@ const AddArtifact = () => {
                         <label className="label">
                             <span className="label-text font-medium text-gray-700">Your Name</span>
                         </label>
-                        <input type="text" name="username" className="input input-bordered w-full" />
+                        <input type="text" name="username" defaultValue={user?.name} className="input input-bordered w-full" />
                     </div>
                     <div>
                         <label className="label">

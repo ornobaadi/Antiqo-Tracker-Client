@@ -12,6 +12,8 @@ import AllArtifacts from "../pages/AllArtifacts/AllArtifacts";
 import MyLikedArtifacts from "../pages/MyLikedArtifacts/MyLikedArtifacts";
 import AddArtifact from "../pages/AddArtifact/AddArtifact";
 import MyArtifacts from "../pages/MyArtifacts/MyArtifacts";
+import Profile from "../pages/Profile/Profile";
+import UpdateProfile from "../pages/Profile/UpdateProfile";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +61,20 @@ const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>,
+            },
+            {
+                path: '/profile',
+                element:
+                    <PrivateRoute>
+                        <Profile></Profile>
+                    </PrivateRoute>,
+            },
+            {
+                path: '/update-profile',
+                element:
+                    <PrivateRoute>
+                        <UpdateProfile></UpdateProfile>
+                    </PrivateRoute>,
             },
         ]
     },

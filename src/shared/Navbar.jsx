@@ -22,6 +22,9 @@ const Navbar = () => {
         <li><NavLink to='/addartifacts'>Add Artifacts</NavLink></li>
         <li><NavLink to='/likedartifacts'>Liked Artifacts</NavLink></li>
         <li><NavLink to='/myartifacts'>My Artifacts</NavLink></li>
+        {user && (
+            <li><NavLink to='/profile'>My Profile</NavLink></li>
+        )}
     </>
 
     return (
@@ -59,6 +62,10 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+                {user && user?.photoURL && (
+                    <Link to='/profile'><img className="w-8 h-8 md:h-12 md:w-12  object-cover rounded-full" src={user.photoURL} alt="User" /></Link>
+                )}
+
                 {
                     user ?
                         <>
