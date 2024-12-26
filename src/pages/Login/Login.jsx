@@ -4,6 +4,7 @@ import SocialLogin from "../../shared/SocialLogin";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const Login = () => {
     const { loginUser } = useContext(AuthContext);
@@ -22,7 +23,12 @@ const Login = () => {
 
         try {
             const result = await loginUser(email, password);
-            console.log('login', result.user);
+            console.log('login', result.user.email)
+            const user = { email: email }
+            axios.post('http://localhost:3000/jwt', user, { withCredentials: true })
+                .then(res => {
+                    console.log(res.data);
+                })
             // Show success alert
             Swal.fire({
                 icon: 'success',
