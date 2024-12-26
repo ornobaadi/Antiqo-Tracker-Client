@@ -25,7 +25,7 @@ const Login = () => {
             const result = await loginUser(email, password);
             console.log('login', result.user.email)
             const user = { email: email }
-            axios.post('http://localhost:3000/jwt', user, { withCredentials: true })
+            axios.post('https://historical-artifacts-server.vercel.app/jwt', user, { withCredentials: true })
                 .then(res => {
                     console.log(res.data);
                 })

@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const EmptyState = ({ title, message }) => (
     <div className="flex flex-col items-center justify-center py-12 px-4">
@@ -13,25 +14,27 @@ const EmptyState = ({ title, message }) => (
 
 const MyArtifacts = () => {
     const [artifacts, setArtifacts] = useState([]);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
     const { user } = useAuth();
 
-    const fetchArtifacts = () => {
-        setLoading(true);
-        fetch(`https://historical-artifacts-server.vercel.app/artifacts?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => {
-                setArtifacts(data);
-                setLoading(false);
-            })
-            .catch(error => {
-                console.error("Fetch error:", error);
-                setLoading(false);
-            });
-    }
+    // const fetchArtifacts = () => {
+    //     setLoading(true);
+    //     fetch(`https://historical-artifacts-server.vercel.app/artifacts?email=${user.email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setArtifacts(data);
+    //             setLoading(false);
+    //         })
+    //         .catch(error => {
+    //             console.error("Fetch error:", error);
+    //             setLoading(false);
+    //         });
+    // }
 
     useEffect(() => {
-        fetchArtifacts();
+        axios.get(`https://historical-artifacts-server.vercel.app/artifacts?email=${user.email}`, { withCredentials: true })
+        .then(res => setArtifacts(res.data))
+        // fetchArtifacts();
     }, [user.email])
 
     const handleDelete = (id) => {
@@ -81,14 +84,6 @@ const MyArtifacts = () => {
             }
         });
     };
-
-    if (loading) {
-        return (
-            <div className="flex justify-center items-center min-h-[400px]">
-                <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
-            </div>
-        );
-    }
 
     return (
         <div className="container mx-auto px-5 py-10">
