@@ -3,6 +3,7 @@ import AuthContext from "../../context/AuthContext/AuthContext";
 import SocialLogin from "../../shared/SocialLogin";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const { loginUser } = useContext(AuthContext);
@@ -44,6 +45,9 @@ const Login = () => {
 
     return (
         <div className="min-h-screen bg-base-100 flex items-center justify-center">
+            <Helmet>
+                <title>Login | Antiqo</title>
+            </Helmet>
             <div className="max-w-md w-full bg-base-100 shadow-xl rounded-lg p-8">
                 <div className="text-center mb-6">
                     <h1 className="text-3xl font-bold">Login</h1>

@@ -1,6 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const ArtifactDetails = () => {
     const {
@@ -66,6 +67,9 @@ const ArtifactDetails = () => {
 
     return (
         <div className="bg-base-100 min-h-[800px] flex items-center justify-center py-10 px-4">
+            <Helmet>
+                <title>{artifactName} | Antiqo</title>
+            </Helmet>
             <div className="bg-white rounded-lg shadow-lg max-w-7xl w-full flex flex-col lg:flex-row">
                 {/* Image Section */}
                 <div className="w-full lg:w-1/2">

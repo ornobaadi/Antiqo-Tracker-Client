@@ -4,6 +4,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import AuthContext from '../../context/AuthContext/AuthContext';
 import SocialLogin from '../../shared/SocialLogin';
 import { Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 
 const Signup = () => {
@@ -96,6 +97,9 @@ const Signup = () => {
 
     return (
         <div className="min-h-screen bg-base-100 flex items-center justify-center">
+            <Helmet>
+                <title>Signup | Antiqo</title>
+            </Helmet>
             <div className="max-w-md w-full bg-base-100 shadow-xl rounded-lg p-8">
                 <div className="text-center mb-6">
                     <h1 className="text-3xl font-bold">Sign Up</h1>

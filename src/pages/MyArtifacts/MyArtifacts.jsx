@@ -96,9 +96,9 @@ const MyArtifacts = () => {
                 <title>My Artifacts | Antiqo</title>
             </Helmet>
             <h2 className="text-4xl text-center font-medium mb-10">My Posted Artifacts: {artifacts.length}</h2>
-            
+
             {artifacts.length === 0 ? (
-                <EmptyState 
+                <EmptyState
                     title="No artifacts posted yet"
                     message="Start sharing your historical artifacts with the community by posting your first artifact."
                 />
@@ -108,6 +108,7 @@ const MyArtifacts = () => {
                         <thead>
                             <tr>
                                 <th></th>
+                                <th>Artifact Image</th>
                                 <th>Artifact Name</th>
                                 <th>Artifact Type</th>
                                 <th>Like Count</th>
@@ -117,20 +118,29 @@ const MyArtifacts = () => {
                         <tbody>
                             {artifacts.map((artifact, index) => (
                                 <tr key={artifact._id}>
-                                    <th>{index + 1}</th>
+                                    <td>{index + 1}</td>
+                                    <td>
+                                        <div className="avatar">
+                                            <div className="mask h-12 w-24">
+                                                <img
+                                                    src={artifact.artifactImage}
+                                                    alt="" />
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>{artifact.artifactName}</td>
                                     <td>{artifact.artifactType}</td>
                                     <td>{artifact.likeCount || 0}</td>
                                     <td>
                                         <div className="flex gap-3">
-                                            <Link 
-                                                to={`/update-artifact/${artifact._id}`} 
+                                            <Link
+                                                to={`/update-artifact/${artifact._id}`}
                                                 className="btn btn-sm btn-primary"
                                             >
                                                 Update
                                             </Link>
-                                            <button 
-                                                onClick={() => handleDelete(artifact._id)} 
+                                            <button
+                                                onClick={() => handleDelete(artifact._id)}
                                                 className="btn btn-sm btn-error"
                                             >
                                                 Delete
