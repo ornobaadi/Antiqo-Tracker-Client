@@ -141,7 +141,7 @@ const MyArtifacts = () => {
                                             </Link>
                                             <button
                                                 onClick={() => handleDelete(artifact._id)}
-                                                className="btn btn-sm btn-error"
+                                                className="btn btn-sm text-white btn-error"
                                             >
                                                 Delete
                                             </button>

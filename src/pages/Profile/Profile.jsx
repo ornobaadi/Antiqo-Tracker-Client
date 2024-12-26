@@ -8,7 +8,7 @@ const Profile = () => {
     const { user } = useContext(AuthContext);
 
     return (
-        <div className="min-h-screen flex flex-col items-center py-12">
+        <div className="flex flex-col items-center py-12">
             <Helmet>
                 <title>My Profile | Antiqo</title>
             </Helmet>
@@ -47,7 +47,7 @@ const Profile = () => {
                 <div className="px-8 py-6 text-center">
                     <Link
                         to="/update-profile"
-                        className="inline-block bg-emerald-500 text-white py-3 px-6 rounded-lg shadow-md hover:bg-emerald-600 transition-transform active:scale-95"
+                        className="btn btn-success text-stone-50"
                     >
                         Update Profile
                     </Link>

@@ -21,7 +21,7 @@ const HotArtifactCard = ({ artifact }) => {
                 <div className="card-actions justify-end mt-4">
                     <Link
                         to={`/artifacts/${_id}`}
-                        className="btn btn-primary"
+                        className="btn btn-outline"
                     >
                         View Details
                     </Link>

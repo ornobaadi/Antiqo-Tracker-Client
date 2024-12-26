@@ -161,7 +161,7 @@ const UpdateArtifact = () => {
                     </div>
 
                     <div className="form-control mt-6">
-                        <button className="btn btn-primary w-full text-lg">Update Artifact</button>
+                        <button className="btn btn-neutral w-full text-lg">Update Artifact</button>
                     </div>
                 </form>
             </div>

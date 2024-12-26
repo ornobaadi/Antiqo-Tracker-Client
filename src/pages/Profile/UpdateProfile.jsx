@@ -31,7 +31,7 @@ const UpdateProfile = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center py-12">
+        <div className=" flex flex-col items-center py-12">
             <Helmet>
                 <title>Update Profile | Antiqo</title>
             </Helmet>

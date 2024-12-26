@@ -55,7 +55,7 @@ const Banner = () => {
                         <h1 className="text-4xl font-bold mb-2">{slide.title}</h1>
                         <p className="text-lg mb-4">{slide.subtitle}</p>
                         <Link to='/allartifacts'
-                            className="btn font-semibold rounded shadow">
+                            className="btn font-semibold">
                             Explore More
                         </Link>
                     </div>
