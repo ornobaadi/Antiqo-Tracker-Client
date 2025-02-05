@@ -21,11 +21,6 @@ Antiqo is a web application designed to manage and showcase historical artifacts
 ### Project Overview
 Antiqo is a dynamic platform for historical artifact enthusiasts. It enables users to explore, contribute, and interact with a wide array of historical items, emphasizing seamless user experience and secure data management.
 
-### Screenshot
-<div align="center">
-  <img src="public/Antiqo Mockup.png" alt="Antiqo Interface Screenshot" width="700">
-</div>
-
 ### Technologies Used
 - **Frontend**: React, Tailwind CSS, Flowbite, Framer Motion
 - **Backend**: Node.js, Express.js, MongoDB, JWT
