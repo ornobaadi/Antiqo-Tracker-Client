@@ -13,12 +13,13 @@ const ArtifactDetails = () => {
         discoveredAt,
         discoveredBy,
         presentLocation,
-        likeCount,
+        likeCount: initialLikeCount,
     } = useLoaderData();
 
     const { id } = useParams();
     const { user } = useAuth();
     const [isLiked, setIsLiked] = useState(false);
+    const [likeCount, setLikeCount] = useState(initialLikeCount);
 
     // Fetch initial liked status
     useEffect(() => {
@@ -34,6 +35,9 @@ const ArtifactDetails = () => {
 
     // Handle like
     const handleLike = () => {
+        setIsLiked(true);
+        setLikeCount((prev) => prev + 1);
+
         const likedArtifact = {
             artifact_id: id,
             applicant_email: user.email,
@@ -46,23 +50,40 @@ const ArtifactDetails = () => {
             },
             body: JSON.stringify(likedArtifact),
         })
-            .then((res) => res.json())
-            .then(() => {
-                setIsLiked(true);
+            .then((res) => {
+                if (!res.ok) {
+                    // Revert state on failure
+                    setIsLiked(false);
+                    setLikeCount((prev) => prev - 1);
+                }
             })
-            .catch((error) => console.error("Error liking artifact:", error));
+            .catch((error) => {
+                console.error("Error liking artifact:", error);
+                setIsLiked(false);
+                setLikeCount((prev) => prev - 1);
+            });
     };
 
     // Handle unlike
     const handleUnlike = () => {
+        setIsLiked(false);
+        setLikeCount((prev) => prev - 1);
+
         fetch(`https://historical-artifacts-server.vercel.app/liked-artifacts/${id}?email=${user.email}`, {
             method: 'DELETE',
         })
-            .then((res) => res.json())
-            .then(() => {
-                setIsLiked(false);
+            .then((res) => {
+                if (!res.ok) {
+                    // Revert state on failure
+                    setIsLiked(true);
+                    setLikeCount((prev) => prev + 1);
+                }
             })
-            .catch((error) => console.error("Error unliking artifact:", error));
+            .catch((error) => {
+                console.error("Error unliking artifact:", error);
+                setIsLiked(true);
+                setLikeCount((prev) => prev + 1);
+            });
     };
 
     return (
@@ -101,9 +122,7 @@ const ArtifactDetails = () => {
                         <p>
                             <span className="font-semibold text-gray-700">Present Location:</span> {presentLocation}
                         </p>
-                        <p
-                            className="text-xl font-semibold text-gray-700"> Like Count: {likeCount}
-                        </p>
+                        <p className="text-xl font-semibold text-gray-700"> Like Count: {likeCount}</p>
                     </div>
 
                     {/* Action Section */}

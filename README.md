@@ -1,57 +1,83 @@
 <div align="center">
-  <img src="public/logo.webp" alt="Antiqo Logo" width="400">
+  <img src="public/Antiqo Mockup.png" alt="Antiqo Logo" width="700">
 </div>
 
 
 # Antiqo - Historical Artifacts Tracker
 
-## Project Purpose
-The Historical Artifacts Tracker is a web application designed for managing and displaying information about various historical artifacts. It allows users to browse, view, and add historical artifacts, as well as like and track their own contributions. The platform emphasizes user-friendly functionality and an engaging design to showcase cultural and historical items.
+## Project Overview
+Antiqo is a web application designed to manage and showcase historical artifacts. Users can browse, view, and contribute artifacts, like and track their submissions, all within a user-friendly and responsive platform that highlights cultural and historical treasures.
 
-## Links
-- **[Live Site](https://antiqo-tracker.web.app/)** | **[Client Side](https://github.com/programming-hero-web-course2/b10a11-client-side-ornobaadi)** | **[Server Side](https://github.com/programming-hero-web-course2/b10a11-server-side-ornobaadi)**
-
-## Key Features
-1. **Authentication System**: Email/password and Google/GitHub login options with private/protected routes for secure data access.
-2. **Responsive Design**: Fully functional across mobile, tablet, and desktop devices.
-3. **CRUD Operations**: Users can add, update, and delete their artifacts, ensuring secure and personalized data management.
-4. **Dynamic Pages**: Includes dynamic page titles, a 404 Not Found page, and loading spinners.
-5. **Artifact Interaction**: Users can like artifacts, toggle likes/dislikes, and view liked artifacts on a dedicated page.
-6. **Search Functionality**: Search artifacts by name on the "All Artifacts" page.
-7. **Featured Artifacts**: Displays the top 6 most liked artifacts on the homepage.
-8. **Extra Sections**: Additional relevant sections on the homepage to enhance user engagement.
-9. **Toast Notifications**: Real-time feedback for CRUD operations.
-10. **Secure Configurations**: Firebase and MongoDB credentials are secured using environment variables.
+## Live Project Link
+- **[Live Site](https://antiqo-tracker.web.app/)**
 
 ## Technologies Used
-- **Frontend**:
-  - React
-  - Tailwind CSS
-  - Additional Tailwind libraries like Flowbite
-  - Framer Motion for animations (optional)
-- **Backend**:
-  - Node.js
-  - Express.js
-  - MongoDB
-  - JWT for authentication
-- **Hosting**:
-  - Firebase (Frontend)
-  - Vercel (Backend)
+- **Frontend**: React, Tailwind CSS, Flowbite, Framer Motion
+- **Backend**: Node.js, Express.js, MongoDB, JWT
+- **Hosting**: Firebase (Frontend), Vercel (Backend)
 
-## NPM Packages
+## README File
+
+### Project Overview
+Antiqo is a dynamic platform for historical artifact enthusiasts. It enables users to explore, contribute, and interact with a wide array of historical items, emphasizing seamless user experience and secure data management.
+
+### Screenshot
+<div align="center">
+  <img src="public/Antiqo Mockup.png" alt="Antiqo Interface Screenshot" width="700">
+</div>
+
+### Technologies Used
+- **Frontend**: React, Tailwind CSS, Flowbite, Framer Motion
+- **Backend**: Node.js, Express.js, MongoDB, JWT
+- **Hosting**: Firebase, Vercel
+
+### Core Features
+1. **User Authentication**: Email/password and Google/GitHub login, with protected routes.
+2. **Responsive Design**: Optimized for mobile, tablet, and desktop.
+3. **Artifact Management**: Add, update, and delete artifacts with real-time feedback.
+4. **User Interaction**: Like artifacts, track liked items, and view contributions.
+5. **Search & Filter**: Search artifacts by name and display featured items.
+6. **Enhanced UX**: Dynamic titles, 404 page, loading spinners, and toast notifications.
+7. **Secure Configuration**: Environment variables for Firebase and MongoDB.
+
+### Dependencies
 - react-router-dom
 - tailwindcss
-- daisyui (optional UI components)
-- framer-motion (for animations)
-- react-toastify (notifications)
-- axios (HTTP requests)
-- jsonwebtoken (JWT authentication)
-- dotenv (environment variable management)
+- daisyui
+- framer-motion
+- react-toastify
+- axios
+- jsonwebtoken
+- dotenv
 
-## Deployment
-- Ensure that your frontend is deployed on Firebase and backend on Vercel.
-- Secure environment variables for both platforms.
+### How to Run Locally
+1. **Clone the repositories:**
+   ```bash
+   git clone https://github.com/ornobaadi/Antiqo-Tracker-Client.git
+   git clone https://github.com/ornobaadi/Antiqo-Tracker-Server.git
+   ```
+2. **Navigate to each directory and install dependencies:**
+   ```bash
+   cd Antiqo-Tracker-Client
+   npm install
+   
+   cd ../Antiqo-Tracker-Server
+   npm install
+   ```
+3. **Set up environment variables:**
+   - Create a `.env` file in both `client` and `server` directories with the required keys.
+4. **Run the applications:**
+   ```bash
+   cd Antiqo-Tracker-Client
+   npm run dev
+   
+   cd ../Antiqo-Tracker-Server
+   nodemon index.js
+   ```
+5. **Visit the frontend:** Open `http://localhost:5173` in your browser.
 
-## Contribution
-Feel free to fork this repository and submit pull requests for any improvements or bug fixes.
+### Live Links & Resources
+- **[Live Site](https://antiqo-tracker.web.app/)**
+- **[Client Repository](https://github.com/ornobaadi/Antiqo-Tracker-Client)**
+- **[Server Repository](https://github.com/ornobaadi/Antiqo-Tracker-Server)**
 
