@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useContext } from 'react';
 import AuthContext from '../context/AuthContext/AuthContext';
 import { Navigate, useLocation } from 'react-router-dom';
@@ -10,7 +11,9 @@ const PrivateRoute = ({children}) => {
     console.log(location);
 
     if(loading){
-        return <span className="loading loading-dots loading-lg"></span>
+        return <div className="flex justify-center items-center min-h-[400px]">
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
+    </div>
     }
 
     if(user) {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <footer className="footer footer-center bg-neutral text-primary-content p-10">
+        <footer className="footer footer-center bg-gray-900 text-gray-400 p-10">
             <aside>
                 <img className="w-32" src="/logo.webp" alt="" />
                 <p className="font-bold">
@@ -23,13 +23,13 @@ const Footer = () => {
             </aside>
             <nav>
                 <div className="grid grid-flow-col gap-4">
-                    <a href="https://www.facebook.com/">
+                    <a className="hover:text-blue-700" href="https://www.facebook.com/">
                         <Facebook></Facebook>
                     </a>
-                    <a href="https://www.instagram.com/">
+                    <a className="hover:text-pink-500" href="https://www.instagram.com/">
                         <Instagram></Instagram>
                     </a>
-                    <a href="https://github.com/">
+                    <a className="hover:text-gray-50" href="https://github.com/">
                         <Github></Github>
                     </a>
                 </div>

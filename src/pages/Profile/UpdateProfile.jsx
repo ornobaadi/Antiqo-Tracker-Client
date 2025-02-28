@@ -35,14 +35,14 @@ const UpdateProfile = () => {
             <Helmet>
                 <title>Update Profile | Antiqo</title>
             </Helmet>
-            <div className="w-full max-w-lg bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden">
+            <div className="w-full max-w-lg rounded-xl shadow-lg overflow-hidden">
                 <div className="px-8 py-6">
-                    <h2 className="text-2xl font-semibold text-slate-800 text-center mb-6">
+                    <h2 className="text-2xl font-semibold  text-center mb-6">
                         Update Profile Information
                     </h2>
                     <form onSubmit={handleUpdate} className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-slate-600 mb-1">
+                            <label className="block text-sm font-medium  mb-1">
                                 Name
                             </label>
                             <input
@@ -54,7 +54,7 @@ const UpdateProfile = () => {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-600 mb-1">
+                            <label className="block text-sm font-medium  mb-1">
                                 Photo URL
                             </label>
                             <input

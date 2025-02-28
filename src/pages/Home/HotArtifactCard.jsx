@@ -2,27 +2,21 @@
 import { Link } from "react-router-dom";
 
 const HotArtifactCard = ({ artifact }) => {
-
-    const { _id, artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation } = artifact;
+    const { _id, artifactName, artifactImage, historicalContext, likeCount = 0 } = artifact;
 
     return (
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card rounded-lg bg-base-100 shadow-xl">
             <figure>
-                <img src={artifact.artifactImage} alt={artifact.artifactName} className="h-48 w-full object-cover" />
+                <img src={artifactImage} alt={artifactName} className="h-48 w-full object-cover" />
             </figure>
             <div className="card-body">
-                <h2 className="card-title text-lg font-bold">{artifact.artifactName}</h2>
-                <p className="text-sm text-gray-500">{artifact.historicalContext}</p>
+                <h2 className="card-title text-lg font-bold">{artifactName}</h2>
+                <p className="text-sm text-gray-500">{historicalContext}</p>
                 <div className="text-sm mt-2">
-                    <p
-                        className="text-xl font-semibold">Like Count: {artifact.likeCount}
-                    </p>
+                    <p className="text-xl font-semibold">Like Count: {likeCount}</p>
                 </div>
                 <div className="card-actions justify-end mt-4">
-                    <Link
-                        to={`/artifacts/${_id}`}
-                        className="btn btn-outline"
-                    >
+                    <Link to={`/artifacts/${_id}`} className="btn btn-outline">
                         View Details
                     </Link>
                 </div>
@@ -31,4 +25,4 @@ const HotArtifactCard = ({ artifact }) => {
     );
 };
 
-export default HotArtifactCard; 
+export default HotArtifactCard;

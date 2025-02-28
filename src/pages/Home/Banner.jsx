@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Banner = () => {
     const slides = [
@@ -21,6 +22,9 @@ const Banner = () => {
     ];
 
     const [currentSlide, setCurrentSlide] = useState(0);
+    const touchStartX = useRef(null);
+    const touchEndX = useRef(null);
+    const minimumSwipeDistance = 50;
 
     const nextSlide = () => {
         setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -30,53 +34,116 @@ const Banner = () => {
         setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
     };
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % slides.length);
-        }, 5000);
+    const handleTouchStart = (e) => {
+        touchStartX.current = e.touches[0].clientX;
+    };
 
+    const handleTouchMove = (e) => {
+        touchEndX.current = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = () => {
+        if (!touchStartX.current || !touchEndX.current) return;
+
+        const swipeDistance = touchEndX.current - touchStartX.current;
+
+        if (Math.abs(swipeDistance) > minimumSwipeDistance) {
+            if (swipeDistance > 0) {
+                prevSlide();
+            } else {
+                nextSlide();
+            }
+        }
+
+        // Reset values
+        touchStartX.current = null;
+        touchEndX.current = null;
+    };
+
+    useEffect(() => {
+        const interval = setInterval(nextSlide, 5000);
         return () => clearInterval(interval);
-    }, [slides.length]);
+    }, []);
 
     return (
-        <div className="relative w-full h-96 min-h-[800px]">
-            {slides.map((slide, index) => (
-                <div
-                    key={index}
-                    className={`absolute inset-0 transition-opacity duration-500 ${index === currentSlide ? "opacity-100" : "opacity-0"
-                        }`}
-                    style={{
-                        backgroundImage: `url(${slide.image})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                    }}
-                >
-                    <div className="flex flex-col items-center justify-center h-full bg-black bg-opacity-50 text-white text-center px-4">
-                        <h1 className="text-4xl font-bold mb-2">{slide.title}</h1>
-                        <p className="text-lg mb-4">{slide.subtitle}</p>
-                        <Link to='/allartifacts'
-                            className="btn font-semibold">
-                            Explore More
-                        </Link>
+        <div 
+            className="relative w-full h-[50vh] md:h-[80vh] overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+        >
+            {/* Slides */}
+            <div className="relative h-full">
+                {slides.map((slide, index) => (
+                    <div
+                        key={index}
+                        className={`absolute inset-0 transition-all duration-700 transform
+                            ${index === currentSlide ? "opacity-100 translate-x-0" : 
+                            index < currentSlide ? "opacity-0 -translate-x-full" : 
+                            "opacity-0 translate-x-full"}`}
+                    >
+                        {/* Background Image with Gradient Overlay */}
+                        <div 
+                            className="absolute inset-0 bg-cover bg-center"
+                            style={{
+                                backgroundImage: `url(${slide.image})`,
+                            }}
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70" />
+                        </div>
+
+                        {/* Content */}
+                        <div className="relative h-full flex flex-col items-center justify-center text-center px-4 md:px-8 max-w-6xl mx-auto">
+                            <h1 className="text-2xl md:text-5xl font-bold mb-3 md:mb-4 text-white">
+                                {slide.title}
+                            </h1>
+                            <p className="text-sm md:text-xl text-gray-200 mb-6 md:mb-8 max-w-2xl">
+                                {slide.subtitle}
+                            </p>
+                            <Link
+                                to="/allartifacts"
+                                className="btn btn-neutral"
+                            >
+                                Explore More
+                            </Link>
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
 
-            {/* Left Arrow */}
-            <button
-                className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-4 rounded-full hover:bg-gray-700 focus:outline-none"
-                onClick={prevSlide}
-            >
-                ←
-            </button>
+            {/* Navigation Dots */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                {slides.map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => setCurrentSlide(index)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 
+                            ${currentSlide === index ? 
+                            'bg-white w-6' : 
+                            'bg-white/50 hover:bg-white/75'}`}
+                        aria-label={`Go to slide ${index + 1}`}
+                    />
+                ))}
+            </div>
 
-            {/* Right Arrow */}
-            <button
-                className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-4 rounded-full hover:bg-gray-700 focus:outline-none"
-                onClick={nextSlide}
-            >
-                →
-            </button>
+            {/* Navigation Arrows - Hidden on Mobile */}
+            <div className="hidden md:block">
+                <button
+                    className="absolute top-1/2 left-4 transform -translate-y-1/2 p-2 rounded-full bg-black/30 hover:bg-black/50 text-white transition-all focus:outline-none"
+                    onClick={prevSlide}
+                    aria-label="Previous slide"
+                >
+                    <ChevronLeft className="w-6 h-6" />
+                </button>
+
+                <button
+                    className="absolute top-1/2 right-4 transform -translate-y-1/2 p-2 rounded-full bg-black/30 hover:bg-black/50 text-white transition-all focus:outline-none"
+                    onClick={nextSlide}
+                    aria-label="Next slide"
+                >
+                    <ChevronRight className="w-6 h-6" />
+                </button>
+            </div>
         </div>
     );
 };

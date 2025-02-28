@@ -51,26 +51,26 @@ const AddArtifact = () => {
             </Helmet>
 
             <div className="container mx-auto px-5 py-10">
-                <h2 className="text-4xl text-center font-medium text-gray-800 mb-10">Add a New Artifact</h2>
-                <form onSubmit={handleAddArtifact} className="bg-white shadow-lg rounded-lg p-8 space-y-6">
+                <h2 className="text-4xl text-center font-medium mb-10">Add a New Artifact</h2>
+                <form onSubmit={handleAddArtifact} className=" shadow-lg rounded-lg p-8 space-y-6">
                     {/* Artifact name */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text font-medium text-gray-700">Artifact Name</span>
+                            <span className="label-text font-medium">Artifact Name</span>
                         </label>
                         <input type="text" name="artifactName" placeholder="Enter artifact name" className="input input-bordered w-full" required />
                     </div>
                     {/* Artifact image */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text font-medium text-gray-700">Artifact Image (URL)</span>
+                            <span className="label-text font-medium ">Artifact Image (URL)</span>
                         </label>
                         <input type="url" name="artifactImage" placeholder="Enter valid image URL" className="input input-bordered w-full" required />
                     </div>
                     {/* Artifact Type */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text font-medium text-gray-700">Artifact Type</span>
+                            <span className="label-text font-medium ">Artifact Type</span>
                         </label>
                         <select defaultValue="Select a type" name="artifactType" className="select select-bordered w-full" required>
                             <option disabled>Select a type</option>
@@ -87,7 +87,7 @@ const AddArtifact = () => {
                     {/* Historical context */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text font-medium text-gray-700">Historical Context</span>
+                            <span className="label-text font-medium ">Historical Context</span>
                         </label>
                         <textarea name="historicalContext"
                             placeholder="Provide historical context..."
@@ -100,13 +100,13 @@ const AddArtifact = () => {
                     <div className="form-control grid grid-cols-2 gap-4">
                         <div>
                             <label className="label">
-                                <span className="label-text font-medium text-gray-700">Created At</span>
+                                <span className="label-text font-medium ">Created At</span>
                             </label>
                             <input type="text" name="createdAt" placeholder="e.g., 100 BC" className="input input-bordered w-full" required />
                         </div>
                         <div>
                             <label className="label">
-                                <span className="label-text font-medium text-gray-700">Discovered At</span>
+                                <span className="label-text font-medium ">Discovered At</span>
                             </label>
                             <input type="text" name="discoveredAt" placeholder="e.g., 1799" className="input input-bordered w-full" required />
                         </div>
@@ -114,14 +114,14 @@ const AddArtifact = () => {
                     {/* Discovered by */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text font-medium text-gray-700">Discovered By</span>
+                            <span className="label-text font-medium ">Discovered By</span>
                         </label>
                         <input type="text" name="discoveredBy" placeholder="Enter name of discoverer" className="input input-bordered w-full" required />
                     </div>
                     {/* Current location */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text font-medium text-gray-700">Present Location</span>
+                            <span className="label-text font-medium ">Present Location</span>
                         </label>
                         <input type="text" name="presentLocation" placeholder="Enter present location" className="input input-bordered w-full" required />
                     </div>
@@ -129,13 +129,13 @@ const AddArtifact = () => {
                     <div className="form-control grid grid-cols-2 gap-4">
                         <div>
                             <label className="label">
-                                <span className="label-text font-medium text-gray-700">Your Name</span>
+                                <span className="label-text font-medium ">Your Name</span>
                             </label>
                             <input type="text" name="username" defaultValue={user?.name} className="input input-bordered w-full" readOnly />
                         </div>
                         <div>
                             <label className="label">
-                                <span className="label-text font-medium text-gray-700">Your Email</span>
+                                <span className="label-text font-medium ">Your Email</span>
                             </label>
                             <input type="email"
                                 defaultValue={user?.email}

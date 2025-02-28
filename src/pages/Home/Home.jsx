@@ -3,6 +3,9 @@ import Banner from "./Banner";
 import HotArtifacts from "./HotArtifacts";
 import Timeline from "./Timeline";
 import Vision from "./Vision";
+import Blog from "./Blog";
+import TopContributors from "./TopContributors";
+import Statistics from "./Statistics";
 
 
 const Home = () => {
@@ -13,8 +16,11 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <HotArtifacts></HotArtifacts>
+            <Statistics></Statistics>
             <Timeline></Timeline>
             <Vision></Vision>
+            <TopContributors></TopContributors>
+            <Blog></Blog>
         </div>
     );
 };

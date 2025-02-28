@@ -91,7 +91,7 @@ const ArtifactDetails = () => {
             <Helmet>
                 <title>{artifactName} | Antiqo</title>
             </Helmet>
-            <div className="bg-white rounded-lg shadow-lg max-w-7xl w-full flex flex-col lg:flex-row">
+            <div className=" rounded-lg shadow-lg max-w-7xl w-full flex flex-col lg:flex-row">
                 {/* Image Section */}
                 <div className="w-full lg:w-1/2">
                     <img
@@ -103,26 +103,26 @@ const ArtifactDetails = () => {
 
                 {/* Details Section */}
                 <div className="w-full lg:w-1/2 p-8 flex flex-col">
-                    <h1 className="text-2xl font-bold text-gray-800">{artifactName}</h1>
-                    <p className="text-gray-600 mt-4 leading-relaxed">{historicalContext}</p>
+                    <h1 className="text-2xl font-bold">{artifactName}</h1>
+                    <p className="text-gray-500 mt-4 leading-relaxed">{historicalContext}</p>
 
                     <div className="mt-6 space-y-4 text-sm">
                         <p>
-                            <span className="font-semibold text-gray-700">Artifact Type:</span> {artifactType}
+                            <span className="font-semibold ">Artifact Type:</span> {artifactType}
                         </p>
                         <p>
-                            <span className="font-semibold text-gray-700">Created At:</span> {createdAt}
+                            <span className="font-semibold ">Created At:</span> {createdAt}
                         </p>
                         <p>
-                            <span className="font-semibold text-gray-700">Discovered At:</span> {discoveredAt}
+                            <span className="font-semibold ">Discovered At:</span> {discoveredAt}
                         </p>
                         <p>
-                            <span className="font-semibold text-gray-700">Discovered By:</span> {discoveredBy}
+                            <span className="font-semibold ">Discovered By:</span> {discoveredBy}
                         </p>
                         <p>
-                            <span className="font-semibold text-gray-700">Present Location:</span> {presentLocation}
+                            <span className="font-semibold ">Present Location:</span> {presentLocation}
                         </p>
-                        <p className="text-xl font-semibold text-gray-700"> Like Count: {likeCount}</p>
+                        <p className="text-xl font-semibold "> Like Count: {likeCount}</p>
                     </div>
 
                     {/* Action Section */}
