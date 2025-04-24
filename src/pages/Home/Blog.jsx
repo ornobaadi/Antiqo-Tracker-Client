@@ -1,4 +1,4 @@
-import { User } from "lucide-react";
+import { User, Clock, Tag } from "lucide-react";
 
 const BlogCard = ({ category, title, excerpt, author, readTime, image, sourceUrl }) => (
     <a 
@@ -7,29 +7,36 @@ const BlogCard = ({ category, title, excerpt, author, readTime, image, sourceUrl
         rel="noopener noreferrer"
         className="block group"
     >
-        <div className="shadow-xl rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
-            <div className="aspect-[16/9] relative overflow-hidden bg-gray-800">
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl overflow-hidden border border-slate-200 dark:border-slate-700 transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-[1.02]">
+            <div className="aspect-[16/9] relative overflow-hidden">
                 <img
                     src={image}
                     alt={title}
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-gray-900/80 rounded-full text-xs text-gray-300">
+                    <span className="bg-slate-900/70 text-amber-100 text-xs px-3 py-1 rounded-full outfit uppercase tracking-wide flex items-center">
+                        <Tag size={12} className="mr-1" />
                         {category}
                     </span>
                 </div>
             </div>
-            <div className="p-8">
-                <h3 className="text-xl font-medium mb-2 group-hover:text-blue-600 transition-colors">
+            <div className="p-6">
+                <h3 className="text-xl eb-garamond font-bold text-slate-800 dark:text-amber-50 mb-3 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                     {title}
                 </h3>
-                <p className="text-sm mb-8 line-clamp-2 text-gray-500">
+                <p className="text-sm mb-6 line-clamp-2 text-slate-600 dark:text-slate-300 outfit">
                     {excerpt}
                 </p>
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                    <span className="flex items-center gap-2"><User />{author}</span>
-                    <span>{readTime} min read</span>
+                <div className="flex items-center justify-between text-sm text-slate-500 dark:text-slate-400 outfit">
+                    <span className="flex items-center gap-2">
+                        <User size={14} className="text-amber-600 dark:text-amber-400" />
+                        {author}
+                    </span>
+                    <span className="flex items-center gap-2">
+                        <Clock size={14} className="text-amber-600 dark:text-amber-400" />
+                        {readTime} min read
+                    </span>
                 </div>
             </div>
         </div>
@@ -41,7 +48,7 @@ const Blog = () => {
         {
             category: "Christianity",
             title: "Plague made Jesus' birth memorable.",
-            excerpt: "When a terrifying Ebola-like pandemic struck the Roman empire, Christianity offered solutions that the old ways didn’t",
+            excerpt: "When a terrifying Ebola-like pandemic struck the Roman empire, Christianity offered solutions that the old ways didn't",
             author: "Jonathan Kennedy",
             readTime: 12,
             image: "https://i.guim.co.uk/img/media/7b4acb0f0cae251a429e1bc2c2689480ee58c684/0_1419_4724_2834/master/4724.jpg?width=1020&dpr=1&s=none&crop=none",
@@ -50,7 +57,7 @@ const Blog = () => {
         {
             category: "African Art",
             title: "The First Decade",
-            excerpt: "Ten years is a long time in the art market and much has happened since the first instalment in London in 2013, not least the launch of the fair’s successful annual satellite events in New York (since 2015), ",
+            excerpt: "Ten years is a long time in the art market and much has happened since the first instalment in London in 2013, not least the launch of the fair's successful annual satellite events in New York (since 2015), ",
             author: "Dr Thomas Flynn",
             readTime: 15,
             image: "https://images.squarespace-cdn.com/content/v1/5c0291be89c172ab5331ffea/1661808452526-UHYRWBP3CKT7YFGQKRPT/1-54+Contemporary+African+Art+Fair+2021.jpg?format=1500w",
@@ -77,7 +84,7 @@ const Blog = () => {
         {
             category: "Dendrochronology",
             title: "The Provenance of Artists' Materials",
-            excerpt: "Provenance research focuses on an artwork’s history from the moment it leaves the artist’s studio through to the present day. Scientific analysis extends this timeline further. ",
+            excerpt: "Provenance research focuses on an artwork's history from the moment it leaves the artist's studio through to the present day. Scientific analysis extends this timeline further. ",
             author: "Denis Moiseev",
             readTime: 14,
             image: "https://images.squarespace-cdn.com/content/v1/5c0291be89c172ab5331ffea/1615388389698-Q0YD8YI4UTIO4AYL43JV/craquelure_painting.jpg?format=1500w",
@@ -95,11 +102,16 @@ const Blog = () => {
     ];
 
     return (
-        <section className="">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                <h2 className="text-3xl md:text-4xl font-medium text-center mb-10 lg:mb-20">
+        <section className="bg-slate-50 dark:bg-slate-900 py-16">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="w-16 h-1 bg-amber-500 dark:bg-amber-400 mb-4 mx-auto"></div>
+                <h2 className="text-3xl md:text-4xl eb-garamond font-bold text-center text-slate-800 dark:text-amber-50 mb-6">
                     Latest Discoveries in Roman History
                 </h2>
+                <p className="text-center text-slate-500 dark:text-slate-400 outfit mb-12">
+                    Explore the newest findings and historical insights
+                </p>
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {blogs.map((blog, index) => (
                         <BlogCard key={index} {...blog} />
