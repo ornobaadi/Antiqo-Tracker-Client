@@ -3,16 +3,20 @@
 
 :root {
     --bg-primary: theme('colors.slate.300'); /* Light mode: slate-300 */
-    --bg-secondary: theme('colors.amber.200'); /* Light mode: amber-200 */
+    --bg-secondary: theme('colors.slate.100'); /* Light mode: slate-100 */
+    --bg-accent: theme('colors.amber.200'); /* Light mode: amber-200 */
     --text-primary: theme('colors.slate.800');
-    --text-secondary: theme('colors.amber.600'); /* Light mode: amber-600 */
+    --text-secondary: theme('colors.slate.600'); /* Light mode: slate-600 */
+    --text-accent: theme('colors.amber.800'); /* Light mode: amber-800 */
 }
 
 [data-theme="dark"] {
     --bg-primary: theme('colors.slate.800'); /* Dark mode: slate-800 */
-    --bg-secondary: theme('colors.amber.600'); /* Dark mode: amber-600 */
+    --bg-secondary: theme('colors.slate.900'); /* Dark mode: slate-900 */
+    --bg-accent: theme('colors.amber.900'); /* Dark mode: amber-900 */
     --text-primary: theme('colors.slate.200');
-    --text-secondary: theme('colors.amber.300'); /* Dark mode: amber-300 */
+    --text-secondary: theme('colors.slate.400'); /* Dark mode: slate-400 */
+    --text-accent: theme('colors.amber.300'); /* Dark mode: amber-300 */
 }
 
 /* Utility classes for backgrounds and text */
@@ -24,10 +28,18 @@
     background-color: var(--bg-secondary);
 }
 
+.custom-bg-accent {
+    background-color: var(--bg-accent);
+}
+
 .custom-text-primary {
     color: var(--text-primary);
 }
 
 .custom-text-secondary {
     color: var(--text-secondary);
+}
+
+.custom-text-accent {
+    color: var(--text-accent);
 }
