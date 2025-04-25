@@ -98,7 +98,7 @@ const AllArtifact = () => {
                             onChange={handleSearchChange}
                             className="w-full py-3 pl-4 pr-12 rounded-lg border border-slate-200 dark:border-slate-700 custom-bg-secondary custom-text-primary focus:outline-none focus:ring-2 focus:ring-[var(--text-accent)] outfit"
                         />
-                        <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 custom-text-secondary" size={20} />
+                        
                     </div>
                     
                     <div className="relative w-full md:w-auto">
@@ -111,7 +111,6 @@ const AllArtifact = () => {
                             <option value="asc">Likes (Ascending)</option>
                             <option value="desc">Likes (Descending)</option>
                         </select>
-                        <SlidersHorizontal className="absolute right-4 top-1/2 transform -translate-y-1/2 custom-text-secondary" size={18} />
                     </div>
                 </div>
 

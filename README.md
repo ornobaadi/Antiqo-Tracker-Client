@@ -1,30 +1,127 @@
 <div align="center">
-  <img src="public/Antiqo Mockup.png" alt="Antiqo Logo" width="700">
+  <img src="public/Antiqo Mockup.png" alt="Antiqo Logo" width="800">
 </div>
 
 
 # Antiqo - Historical Artifacts Tracker
 
 ## Project Overview
-Antiqo is a web application designed to manage and showcase historical artifacts. Users can browse, view, and contribute artifacts, like and track their submissions, all within a user-friendly and responsive platform that highlights cultural and historical treasures.
+Antiqo is a dynamic web application designed for historical artifact enthusiasts, historians, and researchers. It provides a user-friendly platform to browse, contribute, and manage a diverse collection of historical artifacts. Users can explore cultural treasures, like and track their favorite items, and contribute new artifacts with real-time feedback. Built with a responsive design and secure backend, Antiqo ensures an engaging and seamless experience across devices, making history accessible and interactive.
 
-## Live Project Link
+## Features
+Antiqo offers a rich set of features to enhance user interaction and artifact management:
+
+#### Authentication
+
+
+
+
+
+- Secure Login: Email/password and social login (Google, GitHub) with JWT-based authentication.
+
+
+
+- Protected Routes: Restrict access to user-specific features like liking and contributing artifacts.
+
+#### Artifact Management
+
+
+
+
+
+- Browse Artifacts: View a curated collection with details like historical context, category, and discovery date.
+
+
+
+- Add Artifacts: Users can submit new artifacts with images and metadata.
+
+
+
+- Update/Delete: Authorized users can edit or remove their contributions.
+
+
+
+- Category-Based Suggestions: View similar artifacts by category (e.g., Tools, Pottery) on artifact details pages.
+
+#### User Interaction
+
+
+
+
+
+- Like Artifacts: Users can like artifacts, with real-time like count updates.
+
+
+
+- Track Contributions: View liked and submitted artifacts in user profiles.
+
+
+
+- Responsive Pagination: Browse artifacts with pagination (8 per page) for efficient navigation.
+
+#### Search & Filter
+
+
+
+
+
+- Search by Name: Quickly find artifacts using a search bar.
+
+
+
+- Sort by Likes: Filter artifacts by ascending or descending like counts.
+
+
+
+- Category Filtering: Explore artifacts by specific categories (planned enhancement).
+
+#### User Experience
+
+
+
+
+
+- Responsive Design: Optimized for mobile, tablet, and desktop with Tailwind CSS.
+
+
+
+- Dynamic UI: Animated transitions (Framer Motion), loading spinners, and toast notifications.
+
+
+
+- Custom 404 Page: Friendly error page for invalid routes.
+
+
+
+- SEO-Friendly: Dynamic page titles with react-helmet.
+
+- Security & Performance
+
+
+
+
+
+- Environment Variables: Secure configuration for Firebase, MongoDB, and JWT.
+
+
+
+- Real-Time Feedback: Instant updates for likes, submissions, and errors.
+
+
+
+- Efficient Data Fetching: Optimized API calls with Axios.
+
+### Live Links & Resources
 - **[Live Site](https://antiqo-tracker.web.app/)**
+- **[Client Repository](https://github.com/ornobaadi/Antiqo-Tracker-Client)**
+- **[Server Repository](https://github.com/ornobaadi/Antiqo-Tracker-Server)**
 
 ## Technologies Used
 - **Frontend**: React, Tailwind CSS, Flowbite, Framer Motion
 - **Backend**: Node.js, Express.js, MongoDB, JWT
 - **Hosting**: Firebase (Frontend), Vercel (Backend)
 
-## README File
 
-### Project Overview
-Antiqo is a dynamic platform for historical artifact enthusiasts. It enables users to explore, contribute, and interact with a wide array of historical items, emphasizing seamless user experience and secure data management.
-
-### Technologies Used
-- **Frontend**: React, Tailwind CSS, Flowbite, Framer Motion
-- **Backend**: Node.js, Express.js, MongoDB, JWT
-- **Hosting**: Firebase, Vercel
 
 ### Core Features
 1. **User Authentication**: Email/password and Google/GitHub login, with protected routes.
@@ -60,7 +157,7 @@ Antiqo is a dynamic platform for historical artifact enthusiasts. It enables use
    npm install
    ```
 3. **Set up environment variables:**
-   - Create a `.env` file in both `client` and `server` directories with the required keys.
+   - Create a `.env` file in both `client` and `server` directories with the required firebase and MongoURI config keys.
 4. **Run the applications:**
    ```bash
    cd Antiqo-Tracker-Client
@@ -71,8 +168,13 @@ Antiqo is a dynamic platform for historical artifact enthusiasts. It enables use
    ```
 5. **Visit the frontend:** Open `http://localhost:5173` in your browser.
 
-### Live Links & Resources
-- **[Live Site](https://antiqo-tracker.web.app/)**
-- **[Client Repository](https://github.com/ornobaadi/Antiqo-Tracker-Client)**
-- **[Server Repository](https://github.com/ornobaadi/Antiqo-Tracker-Server)**
+
+## ✨ Author
+
+Developed by **[Abu Jafar Md. Fajlay Rabby](https://www.linkedin.com/in/ornobaadi/)**  
+📁 [Portfolio](https://ornobaadi-1.web.app/)  
+🐙 [GitHub](https://github.com/ornobaadi)
+
+---
+
 
