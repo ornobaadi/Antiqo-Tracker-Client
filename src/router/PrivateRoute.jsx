@@ -11,9 +11,9 @@ const PrivateRoute = ({children}) => {
     console.log(location);
 
     if(loading){
-        return <div className="flex justify-center items-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
-    </div>
+        return <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
+        <div className="w-16 h-16 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>
     }
 
     if(user) {

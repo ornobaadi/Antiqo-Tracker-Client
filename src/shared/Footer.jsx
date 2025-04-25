@@ -3,37 +3,37 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <footer className="footer footer-center bg-gray-900 text-gray-400 p-10">
+        <footer className="footer footer-center custom-bg-secondary text-base-content p-10">
             <aside>
-                <img className="w-32" src="/logo.webp" alt="" />
-                <p className="font-bold">
+                <img className="w-32" src="/logo.webp" alt="Antiqo Tracker Logo" />
+                <p className="font-bold custom-text-primary">
                     Antiqo Tracker
                     <br />
                     Tracking innovations since 1992
                 </p>
 
-                <nav className="grid grid-flow-col gap-4 my-5">
-                    <Link to='/' className="link link-hover hover:font-semibold">Home</Link>
-                    <Link to='/addartifacts' className="link link-hover hover:font-semibold">Add Artifacts</Link>
-                    <Link to='/allartifacts' className="link link-hover hover:font-semibold">All Artifacts</Link>
-                    <Link to='/profile' className="link link-hover hover:font-semibold">My Profile</Link>
+                <nav className="grid grid-flow-col gap-4 my-2">
+                    <Link to='/' className="link link-hover custom-text-secondary hover:custom-text-accent">Home</Link>
+                    <Link to='/addartifacts' className="link link-hover custom-text-secondary hover:custom-text-accent">Add Artifacts</Link>
+                    <Link to='/allartifacts' className="link link-hover custom-text-secondary hover:custom-text-accent">All Artifacts</Link>
+                    <Link to='/profile' className="link link-hover custom-text-secondary hover:custom-text-accent">My Profile</Link>
                 </nav>
 
-                <p> © {new Date().getFullYear()} Antiqo Tracker. All rights reserved.</p>
+                <p className="custom-text-secondary">© {new Date().getFullYear()} Antiqo Tracker. All rights reserved.</p>
+                <nav className="mt-5">
+                    <div className="grid grid-flow-col gap-4">
+                        <a className="custom-text-secondary hover:custom-text-accent" href="https://www.facebook.com/">
+                            <Facebook size={20} />
+                        </a>
+                        <a className="custom-text-secondary hover:custom-text-accent" href="https://www.instagram.com/">
+                            <Instagram size={20} />
+                        </a>
+                        <a className="custom-text-secondary hover:custom-text-accent" href="https://github.com/">
+                            <Github size={20} />
+                        </a>
+                    </div>
+                </nav>
             </aside>
-            <nav>
-                <div className="grid grid-flow-col gap-4">
-                    <a className="hover:text-blue-700" href="https://www.facebook.com/">
-                        <Facebook></Facebook>
-                    </a>
-                    <a className="hover:text-pink-500" href="https://www.instagram.com/">
-                        <Instagram></Instagram>
-                    </a>
-                    <a className="hover:text-gray-50" href="https://github.com/">
-                        <Github></Github>
-                    </a>
-                </div>
-            </nav>
         </footer>
     );
 };
