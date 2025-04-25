@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/Antiqo Mockup.png" alt="Antiqo Logo" width="800">
+  <img src="public/Antiqo.jpg" alt="Antiqo Logo" width="800">
 </div>
 
 
