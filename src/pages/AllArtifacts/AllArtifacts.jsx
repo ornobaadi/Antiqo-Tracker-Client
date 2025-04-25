@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import HotArtifactCard from "../Home/HotArtifactCard";
 import { Helmet } from "react-helmet";
 import { Search, SlidersHorizontal } from "lucide-react";
+import ResponsivePagination from 'react-responsive-pagination';
+import 'react-responsive-pagination/themes/classic.css';
 
 const AllArtifact = () => {
     const [artifacts, setArtifacts] = useState([]);
@@ -9,6 +11,8 @@ const AllArtifact = () => {
     const [filteredArtifacts, setFilteredArtifacts] = useState([]);
     const [sortOrder, setSortOrder] = useState("default");
     const [isLoading, setIsLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const artifactsPerPage = 8;
 
     useEffect(() => {
         setIsLoading(true);
@@ -22,6 +26,7 @@ const AllArtifact = () => {
                 setArtifacts(processedData);
                 setFilteredArtifacts(processedData);
                 setIsLoading(false);
+                setCurrentPage(1); // Reset to page 1 on new data
             })
             .catch(error => {
                 console.error("Error fetching artifacts:", error);
@@ -45,7 +50,14 @@ const AllArtifact = () => {
         }
 
         setFilteredArtifacts(updatedArtifacts);
+        setCurrentPage(1); // Reset to page 1 on search or sort change
     }, [searchTerm, sortOrder, artifacts]);
+
+    // Calculate paginated artifacts
+    const indexOfLastArtifact = currentPage * artifactsPerPage;
+    const indexOfFirstArtifact = indexOfLastArtifact - artifactsPerPage;
+    const currentArtifacts = filteredArtifacts.slice(indexOfFirstArtifact, indexOfLastArtifact);
+    const totalPages = Math.ceil(filteredArtifacts.length / artifactsPerPage);
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
@@ -116,11 +128,27 @@ const AllArtifact = () => {
                         <p className="text-xl custom-text-primary eb-garamond">No artifacts found matching your search.</p>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 py-5">
-                        {filteredArtifacts.map((artifact) => (
-                            <HotArtifactCard key={artifact._id} artifact={artifact} />
-                        ))}
-                    </div>
+                    <>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 py-5">
+                            {currentArtifacts.map((artifact) => (
+                                <HotArtifactCard key={artifact._id} artifact={artifact} />
+                            ))}
+                        </div>
+                        {totalPages > 1 && (
+                            <div className="mt-8 flex justify-center">
+                                <ResponsivePagination
+                                    current={currentPage}
+                                    total={totalPages}
+                                    onPageChange={setCurrentPage}
+                                    className="flex items-center gap-2 custom-text-primary outfit"
+                                    pageItemClassName="px-5 py-2 rounded-lg border border-slate-200 dark:border-slate-700 custom-bg-secondary hover:custom-bg-accent hover:custom-text-primary transition-all duration-300"
+                                    activeItemClassName="custom-bg-accent custom-text-primary"
+                                    navClassName="px-5 py-2 rounded-lg border border-slate-200 dark:border-slate-700 custom-bg-secondary hover:custom-bg-accent hover:custom-text-primary transition-all duration-300"
+                                    disabledClassName="opacity-50 cursor-not-allowed"
+                                />
+                            </div>
+                        )}
+                    </>
                 )}
             </div>
         </div>

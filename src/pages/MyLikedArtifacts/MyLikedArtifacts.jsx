@@ -126,7 +126,8 @@ const MyLikedArtifacts = () => {
               Explore our collection and like artifacts that interest you to see them here.
             </p>
             <Link
-              to="/artifacts"
+              to="/allartifacts"
+              
               className="mt-6 px-6 py-3 bg-gradient-to-r from-[var(--text-accent)] to-amber-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:custom-bg-accent outfit flex items-center"
             >
               <History size={18} className="mr-2" />

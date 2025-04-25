@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet";
 import { Heart, Calendar, User, Clock, Amphora } from "lucide-react";
+import HotArtifactCard from "../Home/HotArtifactCard";
 
 const ArtifactDetails = () => {
     const {
@@ -22,7 +23,10 @@ const ArtifactDetails = () => {
     const [isLiked, setIsLiked] = useState(false);
     const [likeCount, setLikeCount] = useState(initialLikeCount || 0);
     const [isLoading, setIsLoading] = useState(true);
+    const [similarArtifacts, setSimilarArtifacts] = useState([]);
+    const [isSimilarLoading, setIsSimilarLoading] = useState(true);
 
+    // Fetch liked status
     useEffect(() => {
         if (user?.email) {
             setIsLoading(true);
@@ -40,6 +44,30 @@ const ArtifactDetails = () => {
                 });
         }
     }, [id, user?.email]);
+
+    // Fetch similar artifacts
+    useEffect(() => {
+        setIsSimilarLoading(true);
+        fetch(`https://historical-artifacts-server.vercel.app/artifacts?type=${encodeURIComponent(artifactType)}`)
+            .then((res) => res.json())
+            .then((data) => {
+                // Filter out the current artifact and limit to 3
+                const filteredData = data
+                    .filter((artifact) => artifact._id !== id)
+                    .slice(0, 3)
+                    .map((artifact) => ({
+                        ...artifact,
+                        likeCount: artifact.likeCount ?? 0,
+                    }));
+                setSimilarArtifacts(filteredData);
+                setIsSimilarLoading(false);
+            })
+            .catch((error) => {
+                console.error("Error fetching similar artifacts:", error);
+                setSimilarArtifacts([]);
+                setIsSimilarLoading(false);
+            });
+    }, [artifactType, id]);
 
     const handleLike = () => {
         if (!user?.email) return;
@@ -194,12 +222,28 @@ const ArtifactDetails = () => {
                     <h2 className="text-2xl md:text-3xl eb-garamond font-bold text-center custom-text-primary mb-6">
                         Explore Similar Artifacts
                     </h2>
-                    <p className="text-center custom-text-secondary outfit">
+                    <p className="text-center custom-text-secondary outfit mb-8">
                         Discover more historical treasures from the same era and region
                     </p>
                     
-                    <div className="flex justify-center mt-6">
-                        <Link to='/allartifacts' className="px-6 py-3 border border-[var(--text-accent)] custom-text-accent rounded-lg hover:custom-bg-accent transition-all duration-300 outfit">
+                    {isSimilarLoading ? (
+                        <div className="flex justify-center items-center h-64">
+                            <div className="w-16 h-16 border-4 border-[var(--text-accent)] border-t-transparent rounded-full animate-spin"></div>
+                        </div>
+                    ) : similarArtifacts.length === 0 ? (
+                        <div className="text-center py-16">
+                            <p className="text-xl custom-text-primary eb-garamond">No similar artifacts found.</p>
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-5">
+                            {similarArtifacts.map((artifact) => (
+                                <HotArtifactCard key={artifact._id} artifact={artifact} />
+                            ))}
+                        </div>
+                    )}
+                    
+                    <div className="flex justify-center mt-8">
+                        <Link to='/allartifacts' className="px-6 py-3 border border-[var(--text-accent)] custom-text-accent rounded-lg hover:custom-bg-accent hover:text-white transition-all duration-300 outfit">
                             View More {artifactType} Artifacts
                         </Link>
                     </div>
