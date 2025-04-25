@@ -2,7 +2,7 @@ import React from 'react';
 import { Award, BookOpen, UserCheck } from 'lucide-react';
 
 const ContributorCard = ({ name, expertise, contributions, discovery, image }) => (
-    <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl overflow-hidden border border-slate-200 dark:border-slate-700 transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-[1.02] flex flex-col">
+    <div className="custom-bg-secondary rounded-lg shadow-xl overflow-hidden border border-slate-200 dark:border-slate-700 transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-[1.02] flex flex-col">
         {/* Image Container with decorative corners */}
         <div className="aspect-square relative overflow-hidden">
             <img
@@ -20,7 +20,7 @@ const ContributorCard = ({ name, expertise, contributions, discovery, image }) =
             {/* Name overlay */}
             <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="text-xl eb-garamond font-bold text-white">{name}</h3>
-                <span className="text-xs text-amber-300 uppercase tracking-wide outfit">{expertise}</span>
+                <span className="text-xs custom-text-accent uppercase tracking-wide outfit">{expertise}</span>
             </div>
         </div>
 
@@ -28,19 +28,19 @@ const ContributorCard = ({ name, expertise, contributions, discovery, image }) =
         <div className="p-6 flex flex-col flex-grow">
             <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center">
-                    <Award size={18} className="text-amber-600 dark:text-amber-400 mr-2" />
-                    <span className="text-sm font-medium text-slate-800 dark:text-amber-50 outfit">Contributions</span>
+                    <Award size={18} className="custom-text-accent mr-2" />
+                    <span className="text-sm font-medium custom-text-primary outfit">Contributions</span>
                 </div>
-                <span className="text-lg font-bold text-amber-600 dark:text-amber-400 eb-garamond">{contributions}</span>
+                <span className="text-lg font-bold custom-text-accent eb-garamond">{contributions}</span>
             </div>
 
             {/* Recent Discovery */}
             <div>
                 <div className="flex items-center mb-3">
-                    <BookOpen size={18} className="text-amber-600 dark:text-amber-400 mr-2" />
-                    <span className="text-sm font-medium text-slate-800 dark:text-amber-50 outfit">Recent Discovery</span>
+                    <BookOpen size={18} className="custom-text-accent mr-2" />
+                    <span className="text-sm font-medium custom-text-primary outfit">Recent Discovery</span>
                 </div>
-                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed outfit">{discovery}</p>
+                <p className="text-sm custom-text-secondary leading-relaxed outfit">{discovery}</p>
             </div>
         </div>
     </div>
@@ -72,13 +72,13 @@ const TopContributors = () => {
     ];
 
     return (
-        <section className="py-16 bg-slate-50 dark:bg-slate-900">
+        <section className="py-16 custom-bg-primary">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="w-16 h-1 bg-amber-500 dark:bg-amber-400 mb-4 mx-auto"></div>
-                <h2 className="text-3xl md:text-4xl eb-garamond font-bold text-center text-slate-800 dark:text-amber-50 mb-6">
+                <div className="w-16 h-1 custom-bg-accent mb-4 mx-auto"></div>
+                <h2 className="text-3xl md:text-4xl eb-garamond font-bold text-center custom-text-primary mb-6">
                     Top Contributors
                 </h2>
-                <p className="text-center text-slate-500 dark:text-slate-400 outfit mb-6">
+                <p className="text-center custom-text-secondary outfit mb-6">
                     Last Updated: February 2025
                 </p>
                 
@@ -90,7 +90,7 @@ const TopContributors = () => {
                 
                 <div className="flex justify-center items-center mt-12">
                     <button 
-                        className="px-6 py-3 border border-amber-600 dark:border-amber-500 text-amber-700 dark:text-amber-400 rounded-lg hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-all duration-300 outfit flex items-center"
+                        className="px-6 py-3 border border-[var(--text-accent)] custom-text-accent rounded-lg hover:custom-bg-accent hover:text-white transition-all duration-300 outfit flex items-center"
                     >
                         <UserCheck size={18} className="mr-2" />
                         View All Contributors

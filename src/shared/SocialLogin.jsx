@@ -34,15 +34,26 @@ const SocialLogin = () => {
     }
 
     return (
-        <>
-            <div className="divider">OR</div>
-            <div className="flex justify-center my-5">
-                <button onClick={handleGoogleLogin} className="btn w-full">
-                    <FaGoogle />
-                    Login with Google
+        <div className="mt-6">
+            <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-slate-300 dark:border-slate-700"></div>
+                </div>
+                <div className="relative flex justify-center text-sm">
+                    <span className="px-4 custom-bg-secondary custom-text-secondary outfit">Or continue with</span>
+                </div>
+            </div>
+            
+            <div className="mt-6">
+                <button 
+                    onClick={handleGoogleLogin} 
+                    className="w-full flex items-center justify-center px-6 py-3 border border-slate-300 dark:border-slate-700 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 custom-bg-secondary custom-text-primary outfit"
+                >
+                    <FaGoogle className="mr-2 custom-text-accent" />
+                    <span>Sign in with Google</span>
                 </button>
             </div>
-        </>
+        </div>
     );
 };
 

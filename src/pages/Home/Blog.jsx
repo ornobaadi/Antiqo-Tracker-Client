@@ -7,7 +7,7 @@ const BlogCard = ({ category, title, excerpt, author, readTime, image, sourceUrl
         rel="noopener noreferrer"
         className="block group"
     >
-        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl overflow-hidden border border-slate-200 dark:border-slate-700 transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-[1.02]">
+        <div className="custom-bg-secondary rounded-lg shadow-xl overflow-hidden border border-slate-200 dark:border-slate-700 transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-[1.02]">
             <div className="aspect-[16/9] relative overflow-hidden">
                 <img
                     src={image}
@@ -22,19 +22,19 @@ const BlogCard = ({ category, title, excerpt, author, readTime, image, sourceUrl
                 </div>
             </div>
             <div className="p-6">
-                <h3 className="text-xl eb-garamond font-bold text-slate-800 dark:text-amber-50 mb-3 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <h3 className="text-xl eb-garamond font-bold custom-text-primary mb-3 group-hover:custom-text-accent transition-colors">
                     {title}
                 </h3>
-                <p className="text-sm mb-6 line-clamp-2 text-slate-600 dark:text-slate-300 outfit">
+                <p className="text-sm mb-6 line-clamp-2 custom-text-secondary outfit">
                     {excerpt}
                 </p>
-                <div className="flex items-center justify-between text-sm text-slate-500 dark:text-slate-400 outfit">
+                <div className="flex items-center justify-between text-sm custom-text-secondary outfit">
                     <span className="flex items-center gap-2">
-                        <User size={14} className="text-amber-600 dark:text-amber-400" />
+                        <User size={14} className="custom-text-accent" />
                         {author}
                     </span>
                     <span className="flex items-center gap-2">
-                        <Clock size={14} className="text-amber-600 dark:text-amber-400" />
+                        <Clock size={14} className="custom-text-accent" />
                         {readTime} min read
                     </span>
                 </div>
@@ -102,13 +102,13 @@ const Blog = () => {
     ];
 
     return (
-        <section className="bg-slate-50 dark:bg-slate-900 py-16">
+        <section className="custom-bg-primary py-16">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="w-16 h-1 bg-amber-500 dark:bg-amber-400 mb-4 mx-auto"></div>
-                <h2 className="text-3xl md:text-4xl eb-garamond font-bold text-center text-slate-800 dark:text-amber-50 mb-6">
+                <div className="w-16 h-1 custom-bg-accent mb-4 mx-auto"></div>
+                <h2 className="text-3xl md:text-4xl eb-garamond font-bold text-center custom-text-primary mb-6">
                     Latest Discoveries in Roman History
                 </h2>
-                <p className="text-center text-slate-500 dark:text-slate-400 outfit mb-12">
+                <p className="text-center custom-text-secondary outfit mb-12">
                     Explore the newest findings and historical insights
                 </p>
                 

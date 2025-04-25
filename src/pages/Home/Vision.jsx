@@ -1,19 +1,19 @@
 import { Lightbulb, Database, Users, Leaf } from 'lucide-react';
 
 const VisionCard = ({ title, description, icon: Icon }) => (
-    <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl overflow-hidden border border-slate-200 dark:border-slate-700 transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-[1.02]">
+    <div className="custom-bg-secondary rounded-lg shadow-xl overflow-hidden border border-slate-200 dark:border-slate-700 transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-[1.02]">
         <div className="p-8">
-            <div className="w-12 h-12 rounded-lg bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center mb-6">
-                <Icon className="w-6 h-6 text-amber-600 dark:text-amber-400" strokeWidth={1.5} />
+            <div className="w-12 h-12 rounded-lg custom-bg-accent flex items-center justify-center mb-6">
+                <Icon className="w-6 h-6 custom-text-accent" strokeWidth={1.5} />
             </div>
             
-            <h3 className="text-xl eb-garamond font-bold text-slate-800 dark:text-amber-50 mb-4">{title}</h3>
+            <h3 className="text-xl eb-garamond font-bold custom-text-primary mb-4">{title}</h3>
             
-            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed outfit">{description}</p>
+            <p className="text-sm custom-text-secondary leading-relaxed outfit">{description}</p>
         </div>
         
         {/* Decorative bottom line */}
-        <div className="h-1 bg-gradient-to-r from-amber-500 to-amber-300 dark:from-amber-600 dark:to-amber-400"></div>
+        <div className="h-1 bg-gradient-to-r from-[var(--text-accent)] to-amber-700"></div>
     </div>
 );
 
@@ -42,13 +42,13 @@ const Vision = () => {
     ];
 
     return (
-        <section className="py-16 bg-slate-50 dark:bg-slate-900">
+        <section className="py-16 custom-bg-primary">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="w-16 h-1 bg-amber-500 dark:bg-amber-400 mb-4 mx-auto"></div>
-                <h2 className="text-3xl md:text-4xl eb-garamond font-bold text-center text-slate-800 dark:text-amber-50 mb-6">
+                <div className="w-16 h-1 custom-bg-accent mb-4 mx-auto"></div>
+                <h2 className="text-3xl md:text-4xl eb-garamond font-bold text-center custom-text-primary mb-6">
                     Our Vision
                 </h2>
-                <p className="text-center text-slate-600 dark:text-slate-300 outfit mb-12 max-w-3xl mx-auto">
+                <p className="text-center custom-text-secondary outfit mb-12 max-w-3xl mx-auto">
                     We are dedicated to preserving history through innovation and research excellence,
                     bringing the past to life while protecting it for future generations.
                 </p>
@@ -61,7 +61,7 @@ const Vision = () => {
                 
                 {/* Decorative bottom element */}
                 <div className="flex justify-center mt-16">
-                    <div className="w-24 h-1 bg-gradient-to-r from-amber-700 via-amber-500 to-teal-600 dark:from-amber-600 dark:via-amber-400 dark:to-teal-500 rounded-full"></div>
+                    <div className="w-24 h-1 bg-gradient-to-r from-[var(--text-accent)] via-amber-700 to-teal-600 rounded-full"></div>
                 </div>
             </div>
         </section>
