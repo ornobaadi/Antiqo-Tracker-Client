@@ -5,7 +5,7 @@ import AuthContext from '../../context/AuthContext/AuthContext';
 import SocialLogin from '../../shared/SocialLogin';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-
+import { User, Mail, Lock, Image } from 'lucide-react';
 
 const Signup = () => {
     const { createUser } = useContext(AuthContext);
@@ -27,7 +27,6 @@ const Signup = () => {
         try {
             // Username validation
             if (userName.length < 5) {
-                setError('Username must be at least 5 characters long.');
                 throw {
                     code: 'validation/username',
                     message: 'Username must be at least 5 characters long.'
@@ -50,10 +49,9 @@ const Signup = () => {
             }
 
             if (passwordErrors.length > 0) {
-                setError(passwordErrors.join(', '));
                 throw {
                     code: 'validation/password',
-                    message: passwordErrors
+                    message: passwordErrors.join(', ')
                 };
             }
 
@@ -80,8 +78,8 @@ const Signup = () => {
                 setError('This email is already registered. Please try logging in instead.');
             } else if (error.code === 'auth/invalid-email') {
                 setError('Please enter a valid email address.');
-            } else if (!error.code.startsWith('validation/')) { // Don't override validation errors
-                setError('An error occurred during signup. Please try again.');
+            } else {
+                setError(error.message || 'An error occurred during signup. Please try again.');
             }
 
             // Show SweetAlert for the error
@@ -96,82 +94,134 @@ const Signup = () => {
     };
 
     return (
-        <div className="min-h-screen bg-base-100 flex items-center justify-center">
+        <div className="custom-bg-primary min-h-screen py-12 px-4 flex items-center justify-center">
             <Helmet>
                 <title>Signup | Antiqo</title>
             </Helmet>
-            <div className="max-w-md w-full bg-base-100 shadow-xl rounded-lg p-8">
-                <div className="text-center mb-6">
-                    <h1 className="text-3xl font-bold">Sign Up</h1>
-                    <p className="text-sm text-gray-500 mt-2">Create your account to get started!</p>
+            
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--text-accent)] via-amber-700 to-teal-600"></div>
+            
+            <div className="container mx-auto max-w-lg">
+                <div className="custom-bg-secondary rounded-lg shadow-xl overflow-hidden border border-slate-200 dark:border-slate-700">
+                    <div className="p-8">
+                        <div className="w-12 h-1 custom-bg-accent mb-6 mx-auto"></div>
+                        
+                        <h1 className="text-3xl eb-garamond font-bold custom-text-primary text-center">Join Antiqo</h1>
+                        <p className="text-sm custom-text-secondary mt-2 text-center outfit">Begin your exploration of history's treasures</p>
+                        
+                        {error && (
+                            <div className="mt-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm outfit">
+                                {error}
+                            </div>
+                        )}
+                        
+                        <form onSubmit={handleSignup} className="mt-8 space-y-5">
+                            <div className="space-y-2">
+                                <label className="block text-sm font-medium custom-text-primary outfit">
+                                    Username
+                                </label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <User size={18} className="custom-text-accent" />
+                                    </div>
+                                    <input
+                                        type="text"
+                                        name="userName"
+                                        placeholder="Choose a username (min 5 characters)"
+                                        className="pl-10 w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-[var(--text-accent)] custom-bg-secondary custom-text-primary outfit"
+                                        required
+                                        minLength={5}
+                                    />
+                                </div>
+                            </div>
+                            
+                            <div className="space-y-2">
+                                <label className="block text-sm font-medium custom-text-primary outfit">
+                                    Profile Photo URL
+                                </label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <Image size={18} className="custom-text-accent" />
+                                    </div>
+                                    <input
+                                        type="text"
+                                        name="photoUrl"
+                                        placeholder="Enter your photo URL"
+                                        className="pl-10 w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-[var(--text-accent)] custom-bg-secondary custom-text-primary outfit"
+                                    />
+                                </div>
+                            </div>
+                            
+                            <div className="space-y-2">
+                                <label className="block text-sm font-medium custom-text-primary outfit">
+                                    Email
+                                </label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <Mail size={18} className="custom-text-accent" />
+                                    </div>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="Enter your email"
+                                        className="pl-10 w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-[var(--text-accent)] custom-bg-secondary custom-text-primary outfit"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            
+                            <div className="space-y-2">
+                                <label className="block text-sm font-medium custom-text-primary outfit">
+                                    Password
+                                </label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <Lock size={18} className="custom-text-accent" />
+                                    </div>
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        placeholder="Create a strong password"
+                                        className="pl-10 w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-[var(--text-accent)] custom-bg-secondary custom-text-primary outfit"
+                                        required
+                                        minLength={6}
+                                    />
+                                </div>
+                                <p className="mt-1 text-xs custom-text-secondary outfit">
+                                    Must be at least 6 characters with uppercase, lowercase, and numbers
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <button 
+                                    type="submit" 
+                                    className="w-full px-6 py-3 bg-gradient-to-r from-[var(--text-accent)] to-amber-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 outfit flex items-center justify-center"
+                                    disabled={loading}
+                                >
+                                    {loading ? "Creating Account..." : "Create Account"}
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <SocialLogin />
+                        
+                        <div className="mt-6 text-center">
+                            <p className="text-sm custom-text-secondary outfit">
+                                Already have an account?{" "}
+                                <Link to="/login" className="custom-text-accent font-medium hover:underline">
+                                    Sign in
+                                </Link>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-
-                {error && <div className="alert alert-error text-white mb-4">{error}</div>}
-
-                <form onSubmit={handleSignup} className="space-y-4">
-                    <div className="form-control">
-                        <label className="label mb-2 text-sm font-medium text-gray-600">
-                            <span>User Name</span>
-                        </label>
-                        <input
-                            type="text"
-                            name="userName"
-                            placeholder="Enter your username (min 5 characters)"
-                            className="input input-bordered w-full"
-                            required
-                            minLength={5}
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label mb-2 text-sm font-medium text-gray-600">
-                            <span>Profile Photo URL</span>
-                        </label>
-                        <input
-                            type="text"
-                            name="photoUrl"
-                            placeholder="Enter your photo URL"
-                            className="input input-bordered w-full"
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label mb-2 text-sm font-medium text-gray-600">
-                            <span>Email</span>
-                        </label>
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Enter your email"
-                            className="input input-bordered w-full"
-                            required
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label mb-2 text-sm font-medium text-gray-600">
-                            <span>Password</span>
-                        </label>
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="Enter your password"
-                            className="input input-bordered w-full"
-                            required
-                            minLength={6}
-                        />
-                    </div>
-
-                    <div className="form-control">
-                        <button 
-                            className={`mt-4 btn btn-primary w-full ${loading ? 'loading' : ''}`}
-                            disabled={loading}
-                        >
-                            {loading ? 'Signing up...' : 'Sign Up'}
-                        </button>
-                    </div>
-                    <h2 className="text-center py-5">Already have an Account? &nbsp;
-                        <Link to='/login' className="font-semibold">Login</Link>
-                    </h2>
-                </form>
-                <SocialLogin />
+                
+                <div className="mt-8 text-center">
+                    <div className="w-16 h-1 custom-bg-accent mb-4 mx-auto"></div>
+                    <p className="text-sm custom-text-secondary outfit">
+                        Join thousands of history enthusiasts exploring artifacts around the world
+                    </p>
+                </div>
             </div>
         </div>
     );

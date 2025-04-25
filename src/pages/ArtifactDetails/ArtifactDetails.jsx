@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet";
@@ -199,9 +199,9 @@ const ArtifactDetails = () => {
                     </p>
                     
                     <div className="flex justify-center mt-6">
-                        <button className="px-6 py-3 border border-[var(--text-accent)] custom-text-accent rounded-lg hover:custom-bg-accent transition-all duration-300 outfit">
+                        <Link to='/allartifacts' className="px-6 py-3 border border-[var(--text-accent)] custom-text-accent rounded-lg hover:custom-bg-accent transition-all duration-300 outfit">
                             View More {artifactType} Artifacts
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
